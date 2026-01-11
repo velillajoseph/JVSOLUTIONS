@@ -13,11 +13,11 @@
     <style>
       :root {
         color-scheme: light;
-        --text: #f5f7fa;
-        --muted: #c7d2e1;
-        --border: #1f3550;
-        --surface: #0b1c2d;
-        --surface-alt: #10263d;
+        --text: #0b1c2d;
+        --muted: #2a3b52;
+        --border: #d7e0ea;
+        --surface: #f5f7fa;
+        --surface-alt: #ffffff;
         --accent: #f4c400;
         --accent-strong: #e5b800;
         --accent-light: rgba(244, 196, 0, 0.18);
@@ -58,7 +58,7 @@
         border-bottom: 1px solid var(--border);
         position: sticky;
         top: 0;
-        background: rgba(11, 28, 45, 0.96);
+        background: rgba(255, 255, 255, 0.92);
         backdrop-filter: blur(6px);
         z-index: 10;
       }
@@ -230,7 +230,7 @@
       }
 
       .highlight {
-        background: linear-gradient(135deg, rgba(244, 196, 0, 0.12), rgba(16, 38, 61, 0.8));
+        background: linear-gradient(135deg, rgba(244, 196, 0, 0.16), rgba(11, 28, 45, 0.08));
         border-left: 4px solid var(--accent);
         padding: 20px;
       }
@@ -252,9 +252,9 @@
 
       footer {
         padding: 32px 24px;
-        color: var(--muted);
+        color: #f5f7fa;
         font-size: 0.85rem;
-        background: var(--surface);
+        background: #0b1c2d;
         border-top: 1px solid var(--border);
       }
 
@@ -266,13 +266,13 @@
       }
 
       .footer-title {
-        color: var(--text);
+        color: #f5f7fa;
         font-weight: 600;
         margin-bottom: 8px;
       }
 
       .footer-link {
-        color: var(--muted);
+        color: #c7d2e1;
         text-decoration: none;
         display: inline-block;
         margin-bottom: 6px;
@@ -303,17 +303,10 @@
         box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
         cursor: pointer;
         z-index: 30;
-        animation: fab-float 3.2s ease-in-out infinite;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
       .ai-fab span {
         font-size: 1.3rem;
-      }
-
-      .ai-fab:hover {
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 22px 45px rgba(15, 23, 42, 0.45);
       }
 
       .ai-chat {
@@ -321,7 +314,7 @@
         right: 24px;
         bottom: 92px;
         width: min(360px, calc(100vw - 48px));
-        background: var(--surface);
+        background: var(--surface-alt);
         border: 1px solid var(--border);
         border-radius: 18px;
         box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
@@ -329,20 +322,15 @@
         flex-direction: column;
         overflow: hidden;
         z-index: 30;
-        opacity: 0;
-        transform: translateY(12px) scale(0.98);
-        transition: opacity 0.2s ease, transform 0.2s ease;
       }
 
       .ai-chat.open {
         display: flex;
-        opacity: 1;
-        transform: translateY(0) scale(1);
       }
 
       .ai-chat__header {
         padding: 16px 18px;
-        background: var(--surface-alt);
+        background: rgba(15, 36, 56, 0.9);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -371,20 +359,16 @@
       }
 
       .ai-message.bot {
-        background: rgba(244, 196, 0, 0.16);
+        background: rgba(244, 196, 0, 0.12);
         border: 1px solid rgba(244, 196, 0, 0.3);
-        color: #fdf6cf;
-      }
-
-      .ai-message.user {
-        background: rgba(16, 38, 61, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        align-self: flex-end;
         color: var(--text);
       }
 
-      .ai-message.new {
-        animation: message-pop 0.3s ease-out;
+      .ai-message.user {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        align-self: flex-end;
+        color: var(--text);
       }
 
       .ai-chat__input {
@@ -400,7 +384,7 @@
         resize: vertical;
         border-radius: 12px;
         border: 1px solid var(--border);
-        background: rgba(11, 28, 45, 0.9);
+        background: rgba(11, 28, 45, 0.65);
         color: var(--text);
         padding: 10px 12px;
         font-family: inherit;
@@ -415,38 +399,11 @@
         color: #0b1c2d;
         font-weight: 600;
         cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        box-shadow: 0 12px 24px rgba(244, 196, 0, 0.18);
-      }
-
-      .ai-chat__input button:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 16px 30px rgba(244, 196, 0, 0.25);
       }
 
       .ai-chat__hint {
         font-size: 0.78rem;
         color: var(--muted);
-      }
-
-      @keyframes fab-float {
-        0%, 100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-3px);
-        }
-      }
-
-      @keyframes message-pop {
-        from {
-          opacity: 0;
-          transform: translateY(8px) scale(0.98);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
       }
 
       @media (max-width: 720px) {
@@ -517,7 +474,7 @@
               font-size="28"
               font-weight="400"
               letter-spacing="3"
-              fill="#F5F7FA"
+              fill="#0B1C2D"
             >
               SOLUTIONS
             </text>
@@ -701,6 +658,36 @@
                 >
                   CONTROLLED EXECUTION • REPORTING
                 </text>
+              </g>
+
+              <g opacity="0.9">
+                <rect
+                  x="40"
+                  y="262"
+                  width="320"
+                  height="38"
+                  rx="12"
+                  fill="rgba(255,255,255,0.08)"
+                  stroke="rgba(255,255,255,0.18)"
+                />
+                <text
+                  x="200"
+                  y="281"
+                  fill="#F5F7FA"
+                  font-family="Inter, Helvetica, Arial, sans-serif"
+                  font-size="12"
+                  font-weight="500"
+                  letter-spacing="1.4"
+                  text-anchor="middle"
+                  dominant-baseline="middle"
+                >
+                  REAL-TIME OPERATIONS SUPPORT
+                </text>
+                <g fill="#F4C400">
+                  <circle cx="330" cy="281" r="3" />
+                  <circle cx="346" cy="281" r="3" opacity="0.75" />
+                  <circle cx="362" cy="281" r="3" opacity="0.45" />
+                </g>
               </g>
             </svg>
           </div>
@@ -891,7 +878,7 @@
 
       const appendMessage = (text, type) => {
         const message = document.createElement("div");
-        message.className = `ai-message ${type} new`;
+        message.className = `ai-message ${type}`;
         message.textContent = text;
         messages.appendChild(message);
         messages.scrollTop = messages.scrollHeight;
