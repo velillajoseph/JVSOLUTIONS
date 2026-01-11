@@ -4,14 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JV Solutions | Technology Consulting for Government</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         color-scheme: light;
-        --text: #0f172a;
-        --muted: #475569;
-        --border: #e2e8f0;
-        --accent: #0f3d7a;
-        --accent-light: #e7effa;
+        --text: #0b1b2b;
+        --muted: #4b5d70;
+        --border: #d9e2ec;
+        --surface: #f8fafc;
+        --accent: #0b355c;
+        --accent-strong: #0f4c81;
+        --accent-light: #e0f2f1;
+        --teal: #148a8a;
+        --section-padding: 64px;
+        --card-radius: 14px;
+        --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
       }
 
       * {
@@ -21,16 +33,16 @@
       }
 
       body {
-        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
         color: var(--text);
-        background: #ffffff;
-        line-height: 1.5;
+        background: var(--surface);
+        line-height: 1.6;
       }
 
       main {
         max-width: 1100px;
         margin: 0 auto;
-        padding: 72px 24px 48px;
+        padding: 96px 24px 64px;
       }
 
       header {
@@ -41,11 +53,13 @@
         border-bottom: 1px solid var(--border);
         position: sticky;
         top: 0;
-        background: #ffffff;
+        background: rgba(248, 250, 252, 0.96);
+        backdrop-filter: blur(6px);
         z-index: 10;
       }
 
       header span {
+        font-family: "Manrope", "Inter", sans-serif;
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -57,19 +71,23 @@
         color: var(--muted);
         text-decoration: none;
         font-size: 0.85rem;
+        font-weight: 500;
       }
 
       section {
-        padding: 48px 0;
+        padding: var(--section-padding) 0;
         border-bottom: 1px solid var(--border);
       }
 
       h1 {
-        font-size: 2.75rem;
+        font-family: "Manrope", "Inter", sans-serif;
+        font-size: clamp(2.6rem, 4vw, 3.4rem);
         margin-bottom: 16px;
+        letter-spacing: -0.02em;
       }
 
       h2 {
+        font-family: "Manrope", "Inter", sans-serif;
         font-size: 1.6rem;
         margin-bottom: 12px;
       }
@@ -78,6 +96,36 @@
         color: var(--muted);
         max-width: 720px;
         margin-bottom: 12px;
+      }
+
+      .hero {
+        padding-top: 24px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        align-items: center;
+      }
+
+      .hero-content p {
+        font-size: 1.05rem;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+      }
+
+      .hero-media img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
       }
 
       .tagline {
@@ -93,19 +141,32 @@
       }
 
       .button {
-        padding: 12px 20px;
-        border-radius: 4px;
-        border: 1px solid var(--accent);
-        background: var(--accent);
+        padding: 12px 22px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
         color: #ffffff;
         text-decoration: none;
         font-weight: 600;
         font-size: 0.95rem;
+        box-shadow: 0 12px 24px rgba(15, 76, 129, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 30px rgba(15, 76, 129, 0.25);
       }
 
       .button.secondary {
-        background: transparent;
+        background: #ffffff;
         color: var(--accent);
+        border-color: var(--border);
+        box-shadow: none;
+      }
+
+      .button.secondary:hover {
+        transform: translateY(-1px);
       }
 
       .grid {
@@ -117,9 +178,10 @@
 
       .panel {
         border: 1px solid var(--border);
-        padding: 20px;
-        border-radius: 6px;
+        padding: 24px;
+        border-radius: var(--card-radius);
         background: #ffffff;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
       }
 
       ul {
@@ -133,9 +195,24 @@
       }
 
       .highlight {
-        background: var(--accent-light);
-        border-left: 4px solid var(--accent);
-        padding: 16px;
+        background: linear-gradient(135deg, rgba(20, 138, 138, 0.1), rgba(15, 76, 129, 0.08));
+        border-left: 4px solid var(--teal);
+        padding: 20px;
+      }
+
+      .section-image {
+        margin-top: 24px;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .section-image img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        max-height: 320px;
       }
 
       footer {
@@ -143,6 +220,17 @@
         text-align: center;
         color: var(--muted);
         font-size: 0.85rem;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        nav a {
+          margin-left: 12px;
+        }
       }
     </style>
   </head>
@@ -159,15 +247,26 @@
     </header>
 
     <main>
-      <section id="hero">
-        <h1>Technology consulting built for mission-critical government programs.</h1>
-        <p class="tagline">
-          JV Solutions partners with agencies to modernize systems, secure data, and deliver measurable
-          outcomes across complex portfolios.
-        </p>
-        <div class="cta-group">
-          <a class="button" href="#contact">Schedule a Consultation</a>
-          <a class="button secondary" href="#contact">Download Capabilities Statement</a>
+      <section id="hero" class="hero">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <h1>Technology consulting built for mission-critical government programs.</h1>
+            <p class="tagline">
+              JV Solutions partners with agencies to modernize systems, secure data, and deliver measurable
+              outcomes across complex portfolios.
+            </p>
+            <div class="cta-group">
+              <a class="button" href="#contact">Schedule a Consultation</a>
+              <a class="button secondary" href="#contact">Download Capabilities Statement</a>
+            </div>
+          </div>
+          <div class="hero-media">
+            <img
+              src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80"
+              alt="Abstract cityscape with secure network overlays"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
@@ -217,6 +316,13 @@
             <h3>Secure by Design</h3>
             <p>Security, privacy, and governance built into every delivery milestone.</p>
           </div>
+        </div>
+        <div class="section-image">
+          <img
+            src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+            alt="Secure network connections over a government campus"
+            loading="lazy"
+          />
         </div>
       </section>
 
