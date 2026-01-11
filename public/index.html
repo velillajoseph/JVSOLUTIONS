@@ -955,6 +955,15 @@
       fab.addEventListener("click", () => toggleChat(true));
       closeButton.addEventListener("click", () => toggleChat(false));
 
+      const setStatusMessage = (message, isError = false) => {
+        appendMessage(message, "bot");
+        const latestMessage = messages.lastElementChild;
+        if (isError) {
+          latestMessage.style.background = "#ffe4e6";
+          latestMessage.style.borderColor = "#fca5a5";
+        }
+      };
+
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
         const question = textarea.value.trim();
@@ -971,13 +980,22 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: question })
           });
+
+          const payload = await response.json().catch(() => ({}));
+
           if (!response.ok) {
-            throw new Error("AI endpoint unavailable");
+            const errorMessage = payload.error || "The AI assistant is temporarily unavailable.";
+            thinkingMessage.remove();
+            setStatusMessage(errorMessage, true);
+            return;
           }
-          const data = await response.json();
-          thinkingMessage.textContent = data.reply || cannedResponses[Math.floor(Math.random() * cannedResponses.length)];
+
+          const reply = payload.reply?.trim();
+          thinkingMessage.textContent =
+            reply || cannedResponses[Math.floor(Math.random() * cannedResponses.length)];
         } catch (error) {
-          thinkingMessage.textContent = cannedResponses[Math.floor(Math.random() * cannedResponses.length)];
+          thinkingMessage.remove();
+          setStatusMessage("We ran into a connection issue. Please try again in a moment.", true);
         }
       });
     </script>
