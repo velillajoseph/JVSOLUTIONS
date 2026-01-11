@@ -7,20 +7,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
         color-scheme: light;
-        --text: #0b1b2b;
-        --muted: #4b5d70;
-        --border: #d9e2ec;
-        --surface: #f8fafc;
-        --accent: #0b355c;
-        --accent-strong: #0f4c81;
-        --accent-light: #e0f2f1;
-        --teal: #148a8a;
+        --text: #f5f7fa;
+        --muted: #c7d2e1;
+        --border: #1f3550;
+        --surface: #0b1c2d;
+        --surface-alt: #10263d;
+        --accent: #f4c400;
+        --accent-strong: #e5b800;
+        --accent-light: rgba(244, 196, 0, 0.18);
         --section-padding: 64px;
         --card-radius: 14px;
         --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
@@ -54,7 +54,7 @@
         border-bottom: 1px solid var(--border);
         position: sticky;
         top: 0;
-        background: rgba(248, 250, 252, 0.96);
+        background: rgba(11, 28, 45, 0.96);
         backdrop-filter: blur(6px);
         z-index: 10;
       }
@@ -66,12 +66,14 @@
         padding: 20px 0;
       }
 
-      header span {
-        font-family: "Manrope", "Inter", sans-serif;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-size: 0.85rem;
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo svg {
+        width: 200px;
+        height: auto;
       }
 
       nav a {
@@ -80,6 +82,11 @@
         text-decoration: none;
         font-size: 0.85rem;
         font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover {
+        color: var(--accent);
       }
 
       section {
@@ -154,23 +161,23 @@
         border-radius: 999px;
         border: 1px solid transparent;
         background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-        color: #ffffff;
+        color: #0b1c2d;
         text-decoration: none;
         font-weight: 600;
         font-size: 0.95rem;
-        box-shadow: 0 12px 24px rgba(15, 76, 129, 0.2);
+        box-shadow: 0 12px 24px rgba(244, 196, 0, 0.2);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
       .button:hover {
         transform: translateY(-1px);
-        box-shadow: 0 16px 30px rgba(15, 76, 129, 0.25);
+        box-shadow: 0 16px 30px rgba(244, 196, 0, 0.3);
       }
 
       .button.secondary {
-        background: #ffffff;
-        color: var(--accent);
-        border-color: var(--border);
+        background: transparent;
+        color: var(--text);
+        border-color: var(--accent);
         box-shadow: none;
       }
 
@@ -189,7 +196,7 @@
         border: 1px solid var(--border);
         padding: 24px;
         border-radius: var(--card-radius);
-        background: #ffffff;
+        background: var(--surface-alt);
         box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
       }
 
@@ -204,8 +211,8 @@
       }
 
       .highlight {
-        background: linear-gradient(135deg, rgba(20, 138, 138, 0.1), rgba(15, 76, 129, 0.08));
-        border-left: 4px solid var(--teal);
+        background: linear-gradient(135deg, rgba(244, 196, 0, 0.12), rgba(16, 38, 61, 0.8));
+        border-left: 4px solid var(--accent);
         padding: 20px;
       }
 
@@ -229,6 +236,7 @@
         text-align: center;
         color: var(--muted);
         font-size: 0.85rem;
+        background: var(--surface);
       }
 
       @media (max-width: 720px) {
@@ -261,7 +269,35 @@
   <body>
     <header>
       <div class="container header-inner">
-        <span>JV Solutions</span>
+        <div class="logo" aria-label="JV Solutions">
+          <svg width="360" height="88" viewBox="0 0 360 88" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>JV Solutions</title>
+            <text
+              x="52"
+              y="58"
+              text-anchor="middle"
+              font-family="Playfair Display, serif"
+              font-size="46"
+              font-weight="700"
+              letter-spacing="2"
+              fill="#F4C400"
+            >
+              JV
+            </text>
+            <line x1="88" y1="18" x2="88" y2="70" stroke="#F4C400" stroke-width="2.5" />
+            <text
+              x="106"
+              y="58"
+              font-family="Inter, Helvetica, Arial, sans-serif"
+              font-size="28"
+              font-weight="400"
+              letter-spacing="3"
+              fill="#F5F7FA"
+            >
+              SOLUTIONS
+            </text>
+          </svg>
+        </div>
         <nav>
           <a href="#services">Services</a>
           <a href="#government">Government Focus</a>
@@ -325,6 +361,13 @@
             </ul>
           </div>
         </div>
+        <div class="section-image">
+          <img
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+            alt="Consulting team reviewing technology strategy on laptops"
+            loading="lazy"
+          />
+        </div>
       </section>
 
       <section id="government">
@@ -368,6 +411,13 @@
             <p>Built executive dashboards to accelerate decisions on high-priority initiatives.</p>
           </div>
         </div>
+        <div class="section-image">
+          <img
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+            alt="Consultants collaborating around a table with technology dashboards"
+            loading="lazy"
+          />
+        </div>
       </section>
 
       <section id="about">
@@ -385,6 +435,13 @@
             <h3>Mission Integrity</h3>
             <p>Ethical delivery and stewardship of public resources.</p>
           </div>
+        </div>
+        <div class="section-image">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+            alt="Professional team in a modern workspace discussing a project"
+            loading="lazy"
+          />
         </div>
       </section>
 
