@@ -126,6 +126,12 @@ app.post("/api/chat", limiter, async (req, res) => {
 
     return res.json({ reply });
   } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      return res.status(504).json({ error: "The AI service timed out. Please try again." });
+    }
+    if (error instanceof Error && error.message.startsWith("Missing ")) {
+      return res.status(503).json({ error: "The AI service is not configured." });
+    }
     return res.status(500).json({ error: "Unable to reach the AI service right now." });
   }
 });
