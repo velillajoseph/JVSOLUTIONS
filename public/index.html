@@ -303,6 +303,7 @@
         box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
         cursor: pointer;
         z-index: 30;
+        animation: fab-float 3.6s ease-in-out infinite;
       }
 
       .ai-fab span {
@@ -318,14 +319,23 @@
         border: 1px solid var(--border);
         border-radius: 18px;
         box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
-        display: none;
+        display: flex;
         flex-direction: column;
         overflow: hidden;
         z-index: 30;
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
       }
 
       .ai-chat.open {
-        display: flex;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+        pointer-events: auto;
+        animation: chat-open 0.3s ease;
       }
 
       .ai-chat__header {
@@ -356,6 +366,10 @@
         border-radius: 14px;
         font-size: 0.95rem;
         line-height: 1.4;
+      }
+
+      .ai-message.new {
+        animation: message-pop 0.45s ease;
       }
 
       .ai-message.bot {
@@ -404,6 +418,38 @@
       .ai-chat__hint {
         font-size: 0.78rem;
         color: var(--muted);
+      }
+
+      @keyframes fab-float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-14px);
+        }
+      }
+
+      @keyframes message-pop {
+        0% {
+          transform: scale(0.86) translateY(10px);
+          opacity: 0.4;
+        }
+        100% {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes chat-open {
+        0% {
+          opacity: 0;
+          transform: translateY(18px) scale(0.97);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
 
       @media (max-width: 720px) {
@@ -881,6 +927,15 @@
         message.className = `ai-message ${type}`;
         message.textContent = text;
         messages.appendChild(message);
+        void message.offsetHeight;
+        message.classList.add("new");
+        message.addEventListener(
+          "animationend",
+          () => {
+            message.classList.remove("new");
+          },
+          { once: true }
+        );
         messages.scrollTop = messages.scrollHeight;
       };
 
