@@ -13,11 +13,11 @@
     <style>
       :root {
         color-scheme: light;
-        --text: #f5f7fa;
-        --muted: #c7d2e1;
-        --border: #1f3550;
-        --surface: #0b1c2d;
-        --surface-alt: #10263d;
+        --text: #0b1c2d;
+        --muted: #2a3b52;
+        --border: #d7e0ea;
+        --surface: #f5f7fa;
+        --surface-alt: #ffffff;
         --accent: #f4c400;
         --accent-strong: #e5b800;
         --accent-light: rgba(244, 196, 0, 0.18);
@@ -58,7 +58,7 @@
         border-bottom: 1px solid var(--border);
         position: sticky;
         top: 0;
-        background: rgba(11, 28, 45, 0.96);
+        background: rgba(255, 255, 255, 0.92);
         backdrop-filter: blur(6px);
         z-index: 10;
       }
@@ -230,7 +230,7 @@
       }
 
       .highlight {
-        background: linear-gradient(135deg, rgba(244, 196, 0, 0.12), rgba(16, 38, 61, 0.8));
+        background: linear-gradient(135deg, rgba(244, 196, 0, 0.16), rgba(11, 28, 45, 0.08));
         border-left: 4px solid var(--accent);
         padding: 20px;
       }
@@ -529,6 +529,36 @@
                 >
                   CONTROLLED EXECUTION • REPORTING
                 </text>
+              </g>
+
+              <g opacity="0.9">
+                <rect
+                  x="40"
+                  y="262"
+                  width="320"
+                  height="38"
+                  rx="12"
+                  fill="rgba(255,255,255,0.08)"
+                  stroke="rgba(255,255,255,0.18)"
+                />
+                <text
+                  x="200"
+                  y="281"
+                  fill="#F5F7FA"
+                  font-family="Inter, Helvetica, Arial, sans-serif"
+                  font-size="12"
+                  font-weight="500"
+                  letter-spacing="1.4"
+                  text-anchor="middle"
+                  dominant-baseline="middle"
+                >
+                  REAL-TIME OPERATIONS SUPPORT
+                </text>
+                <g fill="#F4C400">
+                  <circle cx="330" cy="281" r="3" />
+                  <circle cx="346" cy="281" r="3" opacity="0.75" />
+                  <circle cx="362" cy="281" r="3" opacity="0.45" />
+                </g>
               </g>
             </svg>
           </div>
