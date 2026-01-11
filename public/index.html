@@ -13,11 +13,11 @@
     <style>
       :root {
         color-scheme: light;
-        --text: #f5f7fa;
-        --muted: #c7d2e1;
-        --border: #1f3550;
-        --surface: #0b1c2d;
-        --surface-alt: #10263d;
+        --text: #0b1c2d;
+        --muted: #2a3b52;
+        --border: #d7e0ea;
+        --surface: #f5f7fa;
+        --surface-alt: #ffffff;
         --accent: #f4c400;
         --accent-strong: #e5b800;
         --accent-light: rgba(244, 196, 0, 0.18);
@@ -50,7 +50,7 @@
       }
 
       main {
-        padding: 96px 24px 64px;
+        padding: 48px 24px 64px;
       }
 
       header {
@@ -58,7 +58,7 @@
         border-bottom: 1px solid var(--border);
         position: sticky;
         top: 0;
-        background: rgba(11, 28, 45, 0.96);
+        background: rgba(255, 255, 255, 0.92);
         backdrop-filter: blur(6px);
         z-index: 10;
       }
@@ -119,7 +119,7 @@
       }
 
       .hero {
-        padding-top: 24px;
+        padding-top: 4px;
       }
 
       .hero-grid {
@@ -139,6 +139,8 @@
         overflow: hidden;
         box-shadow: var(--shadow);
         border: 1px solid var(--border);
+        justify-self: center;
+        background: #0b1c2d;
       }
 
       .hero-media img {
@@ -229,7 +231,7 @@
       }
 
       .highlight {
-        background: linear-gradient(135deg, rgba(244, 196, 0, 0.12), rgba(16, 38, 61, 0.8));
+        background: linear-gradient(135deg, rgba(244, 196, 0, 0.16), rgba(11, 28, 45, 0.08));
         border-left: 4px solid var(--accent);
         padding: 20px;
       }
@@ -384,13 +386,11 @@
               aria-label="Technology consulting network animation"
             >
               <defs>
-                <!-- Colors -->
                 <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stop-color="#0B1C2D" />
                   <stop offset="100%" stop-color="#081421" />
                 </linearGradient>
 
-                <!-- Soft glow -->
                 <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
                   <feGaussianBlur stdDeviation="3" result="blur" />
                   <feMerge>
@@ -399,53 +399,55 @@
                   </feMerge>
                 </filter>
 
-                <!-- Dashed line animation -->
                 <style>
+                  .node, .scanBar { transform-box: fill-box; transform-origin: center; }
                   .gridLine { opacity: 0.18; }
+
                   .link {
                     stroke: rgba(244,196,0,0.55);
                     stroke-width: 2;
                     stroke-linecap: round;
                     stroke-dasharray: 10 10;
-                    animation: dash 6s linear infinite;
+                    stroke-dashoffset: 0;
+                    animation: dash 7s linear infinite;
                   }
+
                   .node {
                     fill: #F4C400;
                     filter: url(#softGlow);
-                    animation: pulse 2.8s ease-in-out infinite;
+                    opacity: 0.95;
+                    animation: pulse 3.2s ease-in-out infinite;
                   }
-                  .node:nth-child(2n) { animation-delay: 0.4s; }
-                  .node:nth-child(3n) { animation-delay: 0.8s; }
 
-                  .scan {
+                  .d1 { animation-delay: 0s; }
+                  .d2 { animation-delay: 0.5s; }
+                  .d3 { animation-delay: 1s; }
+                  .d4 { animation-delay: 1.5s; }
+
+                  .scanBar {
                     opacity: 0.14;
-                    animation: scan 4.8s ease-in-out infinite;
+                    animation: scan 6.2s ease-in-out infinite;
                   }
 
-                  @keyframes dash {
-                    to { stroke-dashoffset: -200; }
-                  }
+                  @keyframes dash { to { stroke-dashoffset: -240; } }
                   @keyframes pulse {
-                    0%, 100% { transform: scale(1); opacity: 0.9; }
-                    50% { transform: scale(1.12); opacity: 1; }
+                    0%, 100% { transform: scale(1); opacity: 0.8; }
+                    50% { transform: scale(1.1); opacity: 1; }
                   }
                   @keyframes scan {
-                    0% { transform: translateX(-220px); }
-                    50% { transform: translateX(860px); }
-                    100% { transform: translateX(-220px); }
+                    0% { transform: translateX(-260px); }
+                    50% { transform: translateX(980px); }
+                    100% { transform: translateX(-260px); }
                   }
 
-                  /* Respect reduced motion */
                   @media (prefers-reduced-motion: reduce) {
-                    .link, .node, .scan { animation: none !important; }
+                    .link, .node, .scanBar { animation: none !important; }
                   }
                 </style>
               </defs>
 
-              <!-- Background -->
               <rect x="0" y="0" width="860" height="320" rx="24" fill="url(#bgGrad)" />
 
-              <!-- Subtle grid -->
               <g class="gridLine" stroke="rgba(245,247,250,0.45)" stroke-width="1">
                 <path d="M40 60 H820" />
                 <path d="M40 120 H820" />
@@ -459,12 +461,8 @@
                 <path d="M720 30 V290" />
               </g>
 
-              <!-- Moving scan bar -->
-              <g class="scan">
-                <rect x="-220" y="0" width="220" height="320" fill="rgba(244,196,0,0.28)" />
-              </g>
+              <rect class="scanBar" x="-260" y="0" width="260" height="320" fill="rgba(244,196,0,0.28)" />
 
-              <!-- Links -->
               <g fill="none">
                 <path class="link" d="M120 90 C220 40, 300 40, 380 90" />
                 <path class="link" d="M380 90 C460 140, 520 160, 600 130" />
@@ -474,60 +472,94 @@
                 <path class="link" d="M420 165 C520 150, 620 160, 720 210" />
               </g>
 
-              <!-- Nodes -->
               <g>
-                <circle class="node" cx="120" cy="90" r="6" />
-                <circle class="node" cx="380" cy="90" r="6" />
-                <circle class="node" cx="600" cy="130" r="6" />
-                <circle class="node" cx="790" cy="150" r="6" />
-                <circle class="node" cx="220" cy="220" r="6" />
-                <circle class="node" cx="520" cy="220" r="6" />
-                <circle class="node" cx="160" cy="150" r="5" />
-                <circle class="node" cx="420" cy="165" r="5" />
-                <circle class="node" cx="720" cy="210" r="5" />
+                <circle class="node d1" cx="120" cy="90" r="6" />
+                <circle class="node d2" cx="380" cy="90" r="6" />
+                <circle class="node d3" cx="600" cy="130" r="6" />
+                <circle class="node d4" cx="790" cy="150" r="6" />
+                <circle class="node d2" cx="220" cy="220" r="6" />
+                <circle class="node d3" cx="520" cy="220" r="6" />
+                <circle class="node d1" cx="160" cy="150" r="5" />
+                <circle class="node d4" cx="420" cy="165" r="5" />
+                <circle class="node d2" cx="720" cy="210" r="5" />
               </g>
 
-              <!-- Minimal “consulting” UI blocks -->
               <g opacity="0.92">
                 <rect
-                  x="56"
+                  x="15"
                   y="34"
-                  width="250"
+                  width="38.8%"
                   height="54"
                   rx="14"
                   fill="rgba(255,255,255,0.06)"
                   stroke="rgba(255,255,255,0.12)"
                 />
                 <text
-                  x="76"
-                  y="66"
+                  x="181"
+                  y="61"
                   fill="#F5F7FA"
                   font-family="Inter, Helvetica, Arial, sans-serif"
-                  font-size="14"
-                  letter-spacing="1.2"
+                  font-size="13.5"
+                  font-weight="500"
+                  letter-spacing="1.6"
+                  text-anchor="middle"
+                  dominant-baseline="middle"
                 >
                   DELIVERY • GOVERNANCE • INSIGHTS
                 </text>
 
                 <rect
-                  x="554"
+                  x="505"
                   y="238"
-                  width="250"
+                  width="40%"
                   height="54"
                   rx="14"
                   fill="rgba(255,255,255,0.06)"
                   stroke="rgba(255,255,255,0.12)"
                 />
                 <text
-                  x="574"
-                  y="270"
+                  x="679"
+                  y="265"
                   fill="#F5F7FA"
                   font-family="Inter, Helvetica, Arial, sans-serif"
-                  font-size="14"
-                  letter-spacing="1.2"
+                  font-size="13.5"
+                  font-weight="500"
+                  letter-spacing="1.6"
+                  text-anchor="middle"
+                  dominant-baseline="middle"
                 >
                   CONTROLLED EXECUTION • REPORTING
                 </text>
+              </g>
+
+              <g opacity="0.9">
+                <rect
+                  x="40"
+                  y="262"
+                  width="320"
+                  height="38"
+                  rx="12"
+                  fill="rgba(255,255,255,0.08)"
+                  stroke="rgba(255,255,255,0.18)"
+                />
+                <text
+                  x="200"
+                  y="281"
+                  fill="#F5F7FA"
+                  font-family="Inter, Helvetica, Arial, sans-serif"
+                  font-size="12"
+                  font-weight="500"
+                  letter-spacing="1.4"
+                  text-anchor="middle"
+                  dominant-baseline="middle"
+                >
+                  REAL-TIME OPERATIONS SUPPORT
+                </text>
+                <g fill="#F4C400">
+                  <circle cx="330" cy="281" r="3" />
+                  <circle cx="346" cy="281" r="3" opacity="0.75" />
+                  <circle cx="362" cy="281" r="3" opacity="0.45" />
+                </g>
               </g>
             </svg>
           </div>
