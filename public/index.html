@@ -315,7 +315,7 @@
         right: 24px;
         bottom: 92px;
         width: min(360px, calc(100vw - 48px));
-        background: var(--surface-alt);
+        background: var(--surface);
         border: 1px solid var(--border);
         border-radius: 18px;
         box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
@@ -340,7 +340,7 @@
 
       .ai-chat__header {
         padding: 16px 18px;
-        background: rgba(15, 36, 56, 0.9);
+        background: var(--surface-alt);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -350,6 +350,7 @@
       .ai-chat__header h3 {
         font-size: 1rem;
         font-weight: 600;
+        color: var(--text);
       }
 
       .ai-chat__messages {
@@ -373,16 +374,16 @@
       }
 
       .ai-message.bot {
-        background: rgba(244, 196, 0, 0.12);
-        border: 1px solid rgba(244, 196, 0, 0.3);
-        color: var(--text);
+        background: #fdf2c2;
+        border: 1px solid rgba(244, 196, 0, 0.5);
+        color: #0b1c2d;
       }
 
       .ai-message.user {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: #0b1c2d;
+        border: 1px solid #102a45;
         align-self: flex-end;
-        color: var(--text);
+        color: #ffffff;
       }
 
       .ai-chat__input {
@@ -398,10 +399,15 @@
         resize: vertical;
         border-radius: 12px;
         border: 1px solid var(--border);
-        background: rgba(11, 28, 45, 0.65);
-        color: var(--text);
+        background: #0b1c2d;
+        color: #ffffff;
         padding: 10px 12px;
         font-family: inherit;
+      }
+
+      .ai-chat__input textarea:focus {
+        outline: 2px solid var(--accent);
+        border-color: var(--accent);
       }
 
       .ai-chat__input button {
@@ -409,7 +415,7 @@
         padding: 10px 18px;
         border-radius: 999px;
         border: none;
-        background: var(--accent);
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
         color: #0b1c2d;
         font-weight: 600;
         cursor: pointer;
