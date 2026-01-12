@@ -336,6 +336,51 @@
         margin: 0 auto;
       }
 
+      .hero-workflow__steps {
+        position: relative;
+        z-index: 1;
+        display: none;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .hero-workflow__step {
+        display: grid;
+        gap: 6px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(11, 28, 45, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .hero-workflow__step-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .hero-workflow__step-index {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: rgba(244, 196, 0, 0.16);
+        color: #f4c400;
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+      }
+
+      .hero-workflow__step-text {
+        margin: 0;
+        color: rgba(245, 247, 250, 0.8);
+        font-size: 0.92rem;
+      }
+
       .hero-workflow__map {
         position: relative;
         z-index: 1;
@@ -484,20 +529,28 @@
       @media (max-width: 768px) {
         .hero-workflow {
           min-height: auto;
+          padding: 20px;
+          gap: 16px;
+        }
+
+        .hero-workflow__header {
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .hero-workflow__title {
+          font-size: 1.2rem;
+        }
+
+        .hero-workflow__subtitle {
+          max-width: none;
+        }
+
+        .hero-workflow__steps {
+          display: grid;
         }
 
         .hero-workflow__map {
-          min-height: auto;
-          padding: 0;
-          background: none;
-          border: none;
-          display: grid;
-          gap: 16px;
-          justify-items: center;
-        }
-
-        .hero-workflow__routes,
-        .hero-workflow__tracker {
           display: none;
         }
 
@@ -1003,7 +1056,7 @@
               <a class="button secondary" href="#contact">Download Capabilities Statement</a>
             </div>
           </div>
-          <div class="hero-workflow" role="img" aria-label="JV Solutions delivery workflow with interactive route map">
+          <div class="hero-workflow" role="group" aria-label="JV Solutions delivery workflow">
             <div class="hero-workflow__header">
               <span class="hero-workflow__eyebrow">Delivery Workflow</span>
               <h3 class="hero-workflow__title">A guided path for secure, on-time service delivery.</h3>
@@ -1012,6 +1065,53 @@
                 outcomes aligned to mission goals.
               </p>
             </div>
+            <ol class="hero-workflow__steps">
+              <li class="hero-workflow__step">
+                <div class="hero-workflow__step-header">
+                  <span class="hero-workflow__step-index">01</span>
+                  <span>Discovery &amp; Intake</span>
+                </div>
+                <p class="hero-workflow__step-text">
+                  Align scope, success metrics, and stakeholders before delivery begins.
+                </p>
+              </li>
+              <li class="hero-workflow__step">
+                <div class="hero-workflow__step-header">
+                  <span class="hero-workflow__step-index">02</span>
+                  <span>Strategy &amp; Roadmap</span>
+                </div>
+                <p class="hero-workflow__step-text">
+                  Define milestones, compliance checkpoints, and phased modernization.
+                </p>
+              </li>
+              <li class="hero-workflow__step">
+                <div class="hero-workflow__step-header">
+                  <span class="hero-workflow__step-index">03</span>
+                  <span>Secure Build</span>
+                </div>
+                <p class="hero-workflow__step-text">
+                  Deliver zero-trust architecture, ATO support, and risk mitigation.
+                </p>
+              </li>
+              <li class="hero-workflow__step">
+                <div class="hero-workflow__step-header">
+                  <span class="hero-workflow__step-index">04</span>
+                  <span>Delivery &amp; Launch</span>
+                </div>
+                <p class="hero-workflow__step-text">
+                  Deploy with governance, training, and mission readiness support.
+                </p>
+              </li>
+              <li class="hero-workflow__step">
+                <div class="hero-workflow__step-header">
+                  <span class="hero-workflow__step-index">05</span>
+                  <span>Optimize &amp; Support</span>
+                </div>
+                <p class="hero-workflow__step-text">
+                  Continuous monitoring, analytics insights, and long-term enhancements.
+                </p>
+              </li>
+            </ol>
             <div class="hero-workflow__map" aria-hidden="true">
               <svg class="hero-workflow__routes" viewBox="0 0 480 300" preserveAspectRatio="none">
                 <path
