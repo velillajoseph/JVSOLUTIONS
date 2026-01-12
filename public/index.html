@@ -264,10 +264,16 @@
       }
 
       .hero-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        display: flex;
+        flex-direction: column;
         gap: 32px;
-        align-items: start;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 760px;
+        margin: 0 auto;
       }
 
       .hero-content p {
@@ -284,8 +290,10 @@
         border: 1px solid rgba(255, 255, 255, 0.08);
         display: grid;
         gap: 20px;
-        overflow: hidden;
-        min-height: 360px;
+        overflow: visible;
+        min-height: 100vh;
+        width: min(100%, 1100px);
+        margin: 0 auto;
       }
 
       .hero-workflow::before {
@@ -304,6 +312,8 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
+        align-items: center;
+        text-align: center;
       }
 
       .hero-workflow__eyebrow {
@@ -323,6 +333,7 @@
         font-size: 0.98rem;
         color: rgba(245, 247, 250, 0.8);
         max-width: 440px;
+        margin: 0 auto;
       }
 
       .hero-workflow__map {
@@ -332,11 +343,12 @@
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.14);
-        overflow: hidden;
+        overflow: visible;
         padding: 24px;
         display: flex;
         align-items: stretch;
         justify-content: center;
+        width: 100%;
       }
 
       .hero-workflow__routes {
@@ -366,25 +378,16 @@
       }
 
       .hero-workflow__tracker {
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #f4c400;
-        box-shadow: 0 0 16px rgba(244, 196, 0, 0.8);
-        offset-distance: 0%;
-        animation: route-travel 8s linear infinite;
+        filter: drop-shadow(0 0 10px rgba(244, 196, 0, 0.8));
       }
 
       .hero-workflow__tracker--primary {
-        offset-path: path("M 30 230 C 110 160 190 140 260 120 C 330 100 390 130 430 170 C 470 210 430 250 370 270 C 300 295 210 270 150 240 C 100 215 70 210 30 230");
+        fill: #f4c400;
       }
 
       .hero-workflow__tracker--secondary {
-        background: #78b0ff;
-        box-shadow: 0 0 16px rgba(120, 176, 255, 0.75);
-        animation-duration: 10s;
-        offset-path: path("M 40 80 C 120 40 240 60 330 120 C 380 155 410 200 380 230 C 340 270 260 280 190 250 C 120 220 80 180 60 140 C 50 110 45 95 40 80");
+        fill: #78b0ff;
+        filter: drop-shadow(0 0 10px rgba(120, 176, 255, 0.75));
       }
 
       .workflow-node {
@@ -403,6 +406,7 @@
         letter-spacing: 0.01em;
         transform: translate(-50%, -50%);
         cursor: pointer;
+        z-index: 3;
         transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
       }
 
@@ -425,9 +429,10 @@
 
       .workflow-card {
         position: absolute;
-        top: calc(100% + 12px);
+        bottom: calc(100% + 12px);
+        top: auto;
         left: 50%;
-        transform: translate(-50%, 8px);
+        transform: translate(-50%, -8px);
         background: #ffffff;
         color: var(--text);
         padding: 14px 16px;
@@ -437,7 +442,7 @@
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.3s ease, transform 0.3s ease;
-        z-index: 2;
+        z-index: 4;
       }
 
       .workflow-card h4 {
@@ -458,28 +463,69 @@
         transform: translate(-50%, 0);
       }
 
-      .workflow-node--intake { top: 22%; left: 14%; }
-      .workflow-node--strategy { top: 18%; left: 46%; }
-      .workflow-node--secure { top: 36%; left: 74%; }
-      .workflow-node--deliver { top: 62%; left: 64%; }
-      .workflow-node--optimize { top: 78%; left: 32%; }
+      .workflow-node--intake { top: 72%; left: 18%; }
+      .workflow-node--strategy { top: 20%; left: 42%; }
+      .workflow-node--secure { top: 34%; left: 72%; }
+      .workflow-node--deliver { top: 58%; left: 74%; }
+      .workflow-node--optimize { top: 82%; left: 42%; }
 
       @keyframes route-flow {
         0% { stroke-dashoffset: 0; }
         100% { stroke-dashoffset: -120; }
       }
 
-      @keyframes route-travel {
-        0% { offset-distance: 0%; opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { offset-distance: 100%; opacity: 0; }
-      }
-
       @media (prefers-reduced-motion: reduce) {
         .hero-workflow__route,
         .hero-workflow__tracker {
           animation: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-workflow {
+          min-height: auto;
+        }
+
+        .hero-workflow__map {
+          min-height: auto;
+          padding: 0;
+          background: none;
+          border: none;
+          display: grid;
+          gap: 16px;
+          justify-items: center;
+        }
+
+        .hero-workflow__routes,
+        .hero-workflow__tracker {
+          display: none;
+        }
+
+        .workflow-node {
+          position: static;
+          transform: none;
+          width: min(100%, 320px);
+          grid-template-columns: auto 1fr;
+          gap: 10px 14px;
+          justify-items: start;
+          text-align: left;
+          padding: 14px 16px;
+        }
+
+        .workflow-card {
+          position: static;
+          opacity: 1;
+          pointer-events: auto;
+          transform: none;
+          width: 100%;
+          margin-top: 6px;
+          background: rgba(255, 255, 255, 0.94);
+          box-shadow: 0 12px 24px rgba(15, 23, 42, 0.14);
+        }
+
+        .workflow-node:hover .workflow-card,
+        .workflow-node:focus-visible .workflow-card {
+          transform: none;
         }
       }
 
@@ -493,6 +539,7 @@
         gap: 16px;
         margin-top: 24px;
         flex-wrap: wrap;
+        justify-content: center;
       }
 
       .button {
@@ -975,9 +1022,21 @@
                   class="hero-workflow__route hero-workflow__route--secondary"
                   d="M 40 80 C 120 40 240 60 330 120 C 380 155 410 200 380 230 C 340 270 260 280 190 250 C 120 220 80 180 60 140 C 50 110 45 95 40 80"
                 />
+                <circle class="hero-workflow__tracker hero-workflow__tracker--primary" r="6">
+                  <animateMotion
+                    dur="8s"
+                    repeatCount="indefinite"
+                    path="M 30 230 C 110 160 190 140 260 120 C 330 100 390 130 430 170 C 470 210 430 250 370 270 C 300 295 210 270 150 240 C 100 215 70 210 30 230"
+                  />
+                </circle>
+                <circle class="hero-workflow__tracker hero-workflow__tracker--secondary" r="6">
+                  <animateMotion
+                    dur="10s"
+                    repeatCount="indefinite"
+                    path="M 40 80 C 120 40 240 60 330 120 C 380 155 410 200 380 230 C 340 270 260 280 190 250 C 120 220 80 180 60 140 C 50 110 45 95 40 80"
+                  />
+                </circle>
               </svg>
-              <div class="hero-workflow__tracker hero-workflow__tracker--primary" aria-hidden="true"></div>
-              <div class="hero-workflow__tracker hero-workflow__tracker--secondary" aria-hidden="true"></div>
               <div class="workflow-node workflow-node--intake" tabindex="0" role="button" aria-label="Discovery and intake">
                 Discovery &amp; Intake
                 <div class="workflow-card">
