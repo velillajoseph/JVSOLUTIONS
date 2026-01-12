@@ -463,11 +463,11 @@
         transform: translate(-50%, 0);
       }
 
-      .workflow-node--intake { top: 22%; left: 14%; }
-      .workflow-node--strategy { top: 18%; left: 46%; }
-      .workflow-node--secure { top: 36%; left: 74%; }
-      .workflow-node--deliver { top: 62%; left: 64%; }
-      .workflow-node--optimize { top: 78%; left: 32%; }
+      .workflow-node--intake { top: 72%; left: 18%; }
+      .workflow-node--strategy { top: 20%; left: 42%; }
+      .workflow-node--secure { top: 34%; left: 72%; }
+      .workflow-node--deliver { top: 58%; left: 74%; }
+      .workflow-node--optimize { top: 82%; left: 42%; }
 
       @keyframes route-flow {
         0% { stroke-dashoffset: 0; }
@@ -478,6 +478,54 @@
         .hero-workflow__route,
         .hero-workflow__tracker {
           animation: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-workflow {
+          min-height: auto;
+        }
+
+        .hero-workflow__map {
+          min-height: auto;
+          padding: 0;
+          background: none;
+          border: none;
+          display: grid;
+          gap: 16px;
+          justify-items: center;
+        }
+
+        .hero-workflow__routes,
+        .hero-workflow__tracker {
+          display: none;
+        }
+
+        .workflow-node {
+          position: static;
+          transform: none;
+          width: min(100%, 320px);
+          grid-template-columns: auto 1fr;
+          gap: 10px 14px;
+          justify-items: start;
+          text-align: left;
+          padding: 14px 16px;
+        }
+
+        .workflow-card {
+          position: static;
+          opacity: 1;
+          pointer-events: auto;
+          transform: none;
+          width: 100%;
+          margin-top: 6px;
+          background: rgba(255, 255, 255, 0.94);
+          box-shadow: 0 12px 24px rgba(15, 23, 42, 0.14);
+        }
+
+        .workflow-node:hover .workflow-card,
+        .workflow-node:focus-visible .workflow-card {
+          transform: none;
         }
       }
 
