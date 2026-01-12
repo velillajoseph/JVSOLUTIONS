@@ -64,33 +64,90 @@
       }
 
       .header-inner {
+        padding: 16px 0;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 0;
+        justify-content: center;
       }
 
-      .logo {
-        display: flex;
+      .floating-nav {
+        display: inline-flex;
         align-items: center;
+        gap: 20px;
+        padding: 12px 26px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #0b1c2d 0%, #081624 100%);
+        box-shadow: 0 28px 55px rgba(8, 20, 33, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        animation: nav-rise 0.85s ease-out both;
       }
 
-      .logo svg {
-        width: 200px;
+      .floating-nav__logo {
+        display: flex;
+        align-items: center;
+        padding-right: 14px;
+        border-right: 1px solid rgba(255, 255, 255, 0.12);
+        text-decoration: none;
+      }
+
+      .floating-nav__logo svg {
+        width: 150px;
         height: auto;
       }
 
-      nav a {
-        margin-left: 20px;
-        color: var(--muted);
+      .floating-nav__links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .floating-nav__links a {
+        color: rgba(255, 255, 255, 0.78);
         text-decoration: none;
         font-size: 0.85rem;
         font-weight: 500;
-        transition: color 0.2s ease;
+        letter-spacing: 0.02em;
+        padding: 8px 10px;
+        border-radius: 999px;
+        transition: color 0.2s ease, background 0.2s ease;
       }
 
-      nav a:hover {
-        color: var(--accent);
+      .floating-nav__links a:hover,
+      .floating-nav__links a:focus-visible {
+        color: #0b1c2d;
+        background: #f4c400;
+        outline: none;
+      }
+
+      @keyframes nav-rise {
+        0% {
+          opacity: 0;
+          transform: translateY(32px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .floating-nav {
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          padding: 16px 22px;
+          border-radius: 28px;
+        }
+
+        .floating-nav__logo {
+          padding-right: 0;
+          border-right: none;
+        }
+
+        .floating-nav__links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
       }
 
       section {
@@ -513,44 +570,46 @@
       }
     </style>
   </head>
-  <body>
+  <body id="top">
     <header>
       <div class="container header-inner">
-        <div class="logo" aria-label="JV Solutions">
-          <svg width="360" height="88" viewBox="0 0 360 88" xmlns="http://www.w3.org/2000/svg" role="img">
-            <title>JV Solutions</title>
-            <text
-              x="52"
-              y="58"
-              text-anchor="middle"
-              font-family="Playfair Display, serif"
-              font-size="46"
-              font-weight="700"
-              letter-spacing="2"
-              fill="#F4C400"
-            >
-              JV
-            </text>
-            <line x1="88" y1="18" x2="88" y2="70" stroke="#F4C400" stroke-width="2.5" />
-            <text
-              x="106"
-              y="58"
-              font-family="Inter, Helvetica, Arial, sans-serif"
-              font-size="28"
-              font-weight="400"
-              letter-spacing="3"
-              fill="#0B1C2D"
-            >
-              SOLUTIONS
-            </text>
-          </svg>
-        </div>
-        <nav>
-          <a href="#services">Services</a>
-          <a href="#government">Government Focus</a>
-          <a href="#case-highlights">Case Highlights</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+        <nav class="floating-nav" aria-label="Primary">
+          <a class="floating-nav__logo" href="#top" aria-label="JV Solutions Home">
+            <svg width="360" height="88" viewBox="0 0 360 88" xmlns="http://www.w3.org/2000/svg" role="img">
+              <title>JV Solutions</title>
+              <text
+                x="52"
+                y="58"
+                text-anchor="middle"
+                font-family="Playfair Display, serif"
+                font-size="46"
+                font-weight="700"
+                letter-spacing="2"
+                fill="#F4C400"
+              >
+                JV
+              </text>
+              <line x1="88" y1="18" x2="88" y2="70" stroke="#F4C400" stroke-width="2.5" />
+              <text
+                x="106"
+                y="58"
+                font-family="Inter, Helvetica, Arial, sans-serif"
+                font-size="28"
+                font-weight="400"
+                letter-spacing="3"
+                fill="#FFFFFF"
+              >
+                SOLUTIONS
+              </text>
+            </svg>
+          </a>
+          <div class="floating-nav__links">
+            <a href="#services">Services</a>
+            <a href="#government">Government Focus</a>
+            <a href="#case-highlights">Case Highlights</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
         </nav>
       </div>
     </header>
