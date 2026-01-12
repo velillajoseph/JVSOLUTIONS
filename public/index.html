@@ -949,6 +949,8 @@
         messages.scrollTop = messages.scrollHeight;
       };
 
+      const getFallbackReply = () => cannedResponses[Math.floor(Math.random() * cannedResponses.length)];
+
       const toggleChat = (open) => {
         chat.classList.toggle("open", open);
         if (open) {
@@ -988,18 +990,14 @@
           const payload = await response.json().catch(() => ({}));
 
           if (!response.ok) {
-            const errorMessage = payload.error || "The AI assistant is temporarily unavailable.";
-            thinkingMessage.remove();
-            setStatusMessage(errorMessage, true);
+            thinkingMessage.textContent = getFallbackReply();
             return;
           }
 
           const reply = payload.reply?.trim();
-          thinkingMessage.textContent =
-            reply || cannedResponses[Math.floor(Math.random() * cannedResponses.length)];
+          thinkingMessage.textContent = reply || getFallbackReply();
         } catch (error) {
-          thinkingMessage.remove();
-          setStatusMessage("We ran into a connection issue. Please try again in a moment.", true);
+          thinkingMessage.textContent = getFallbackReply();
         }
       });
     </script>
