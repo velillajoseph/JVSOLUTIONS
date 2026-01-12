@@ -10,6 +10,13 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKB4Imkb9yD8s+P45K1Gk5lW2KcvDGqZ1GQ5rF1P8GJz7j9x1D6vC8F6B7p6Y1HDP1sV0LJ8g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
       :root {
         color-scheme: light;
@@ -64,22 +71,7 @@
       }
 
       .header-inner {
-        padding: 16px 0;
-        display: flex;
-        justify-content: center;
-      }
-
-      .floating-nav {
-        display: inline-flex;
-        align-items: center;
-        gap: 20px;
-        padding: 12px 26px;
-        border-radius: 999px;
-        background: linear-gradient(135deg, #0b1c2d 0%, #081624 100%);
-        box-shadow: 0 28px 55px rgba(8, 20, 33, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(12px);
-        animation: nav-rise 0.85s ease-out both;
+        padding: 12px 0;
       }
 
       .floating-nav__logo {
@@ -95,58 +87,231 @@
         height: auto;
       }
 
-      .floating-nav__links {
+      /* ----------custom-navbar-css------------ */
+      .navbar-logo {
+        padding: 10px 16px;
         display: flex;
         align-items: center;
-        gap: 18px;
-      }
-
-      .floating-nav__links a {
-        color: rgba(255, 255, 255, 0.78);
+        color: #ffffff;
         text-decoration: none;
-        font-size: 0.85rem;
+      }
+
+      .navbar-logo svg {
+        width: 190px;
+        height: auto;
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .navbar-mainbg {
+        background-color: #0b1c2d;
+        padding: 0;
+        border-radius: 16px;
+        box-shadow: 0 16px 40px rgba(8, 20, 33, 0.18);
+      }
+
+      .navbar-collapse {
+        display: none;
+        width: 100%;
+      }
+
+      .navbar-nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .ml-auto {
+        margin-left: auto;
+      }
+
+      #navbarSupportedContent {
+        overflow: hidden;
+        position: relative;
+      }
+
+      #navbarSupportedContent ul {
+        padding: 0;
+        margin: 0;
+      }
+
+      #navbarSupportedContent ul li a i {
+        margin-right: 10px;
+      }
+
+      #navbarSupportedContent li {
+        list-style-type: none;
+        float: left;
+      }
+
+      #navbarSupportedContent ul li a {
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        font-size: 0.88rem;
+        display: block;
+        padding: 20px 22px;
+        transition-duration: 0.6s;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
         font-weight: 500;
-        letter-spacing: 0.02em;
-        padding: 8px 10px;
-        border-radius: 999px;
-        transition: color 0.2s ease, background 0.2s ease;
       }
 
-      .floating-nav__links a:hover,
-      .floating-nav__links a:focus-visible {
+      #navbarSupportedContent > ul > li.active > a {
         color: #0b1c2d;
-        background: #f4c400;
-        outline: none;
+        background-color: transparent;
+        transition: all 0.7s;
       }
 
-      @keyframes nav-rise {
-        0% {
-          opacity: 0;
-          transform: translateY(32px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      #navbarSupportedContent a:not(:only-child):after {
+        content: "\f105";
+        position: absolute;
+        right: 18px;
+        top: 12px;
+        font-size: 14px;
+        font-family: "Font Awesome 5 Free";
+        display: inline-block;
+        padding-right: 3px;
+        vertical-align: middle;
+        font-weight: 900;
+        transition: 0.5s;
       }
 
-      @media (max-width: 980px) {
-        .floating-nav {
-          flex-direction: column;
+      #navbarSupportedContent .active > a:not(:only-child):after {
+        transform: rotate(90deg);
+      }
+
+      .hori-selector {
+        display: inline-block;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition-duration: 0.6s;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        background-color: #ffffff;
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+        margin-top: 8px;
+      }
+
+      .hori-selector .right,
+      .hori-selector .left {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background-color: #ffffff;
+        bottom: 8px;
+      }
+
+      .hori-selector .right {
+        right: -24px;
+      }
+
+      .hori-selector .left {
+        left: -24px;
+      }
+
+      .hori-selector .right:before,
+      .hori-selector .left:before {
+        content: "";
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: #0b1c2d;
+      }
+
+      .hori-selector .right:before {
+        bottom: 0;
+        right: -24px;
+      }
+
+      .hori-selector .left:before {
+        bottom: 0;
+        left: -24px;
+      }
+
+      .navbar-toggler {
+        border: none;
+        background: transparent;
+        padding: 16px;
+      }
+
+      .navbar-toggler i {
+        color: #ffffff;
+      }
+
+      @media (min-width: 992px) {
+        .navbar-expand-custom {
+          -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+          -ms-flex-pack: start;
+          justify-content: space-between;
+        }
+
+        .navbar-expand-custom .navbar-nav {
+          -ms-flex-direction: row;
+          flex-direction: row;
+        }
+
+        .navbar-expand-custom .navbar-toggler {
+          display: none;
+        }
+
+        .navbar-expand-custom .navbar-collapse {
+          display: -ms-flexbox !important;
+          display: flex !important;
+          -ms-flex-preferred-size: auto;
+          flex-basis: auto;
           align-items: center;
-          gap: 12px;
-          padding: 16px 22px;
-          border-radius: 28px;
+          justify-content: flex-end;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .navbar-mainbg {
+          border-radius: 14px;
         }
 
-        .floating-nav__logo {
-          padding-right: 0;
-          border-right: none;
+        #navbarSupportedContent ul li a {
+          padding: 12px 30px;
         }
 
-        .floating-nav__links {
-          flex-wrap: wrap;
-          justify-content: center;
+        .hori-selector {
+          margin-top: 0;
+          margin-left: 10px;
+          border-radius: 0;
+          border-top-left-radius: 25px;
+          border-bottom-left-radius: 25px;
+        }
+
+        .hori-selector .left,
+        .hori-selector .right {
+          right: 10px;
+        }
+
+        .hori-selector .left {
+          top: -25px;
+          left: auto;
+        }
+
+        .hori-selector .right {
+          bottom: -25px;
+        }
+
+        .hori-selector .left:before {
+          left: -25px;
+          top: -25px;
+        }
+
+        .hori-selector .right:before {
+          bottom: -25px;
+          left: -25px;
         }
       }
 
@@ -573,8 +738,8 @@
   <body id="top">
     <header>
       <div class="container header-inner">
-        <nav class="floating-nav" aria-label="Primary">
-          <a class="floating-nav__logo" href="#top" aria-label="JV Solutions Home">
+        <nav class="navbar navbar-expand-custom navbar-mainbg">
+          <a class="navbar-brand navbar-logo" href="#top" aria-label="JV Solutions Home">
             <svg width="360" height="88" viewBox="0 0 360 88" xmlns="http://www.w3.org/2000/svg" role="img">
               <title>JV Solutions</title>
               <text
@@ -603,12 +768,34 @@
               </text>
             </svg>
           </a>
-          <div class="floating-nav__links">
-            <a href="#services">Services</a>
-            <a href="#government">Government Focus</a>
-            <a href="#case-highlights">Case Highlights</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars text-white"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+              <li class="nav-item active">
+                <a class="nav-link" href="#services"><i class="fas fa-layer-group"></i>Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#government"><i class="fas fa-landmark"></i>Government Focus</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#case-highlights"><i class="fas fa-star"></i>Case Highlights</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about"><i class="fas fa-user-tie"></i>About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i>Contact</a>
+              </li>
+            </ul>
           </div>
         </nav>
       </div>
@@ -986,7 +1173,70 @@
         <p>JV Solutions | Technology Consulting for Government Programs</p>
       </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <script>
+      // ---------Responsive-navbar-active-animation-----------
+      function test() {
+        var tabsNewAnim = $("#navbarSupportedContent");
+        var selectorNewAnim = $("#navbarSupportedContent").find("li").length;
+        var activeItemNewAnim = tabsNewAnim.find(".active");
+        var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+        var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+        var itemPosNewAnimTop = activeItemNewAnim.position();
+        var itemPosNewAnimLeft = activeItemNewAnim.position();
+        $(".hori-selector").css({
+          top: itemPosNewAnimTop.top + "px",
+          left: itemPosNewAnimLeft.left + "px",
+          height: activeWidthNewAnimHeight + "px",
+          width: activeWidthNewAnimWidth + "px"
+        });
+        $("#navbarSupportedContent").on("click", "li", function () {
+          $("#navbarSupportedContent ul li").removeClass("active");
+          $(this).addClass("active");
+          var activeWidthNewAnimHeight = $(this).innerHeight();
+          var activeWidthNewAnimWidth = $(this).innerWidth();
+          var itemPosNewAnimTop = $(this).position();
+          var itemPosNewAnimLeft = $(this).position();
+          $(".hori-selector").css({
+            top: itemPosNewAnimTop.top + "px",
+            left: itemPosNewAnimLeft.left + "px",
+            height: activeWidthNewAnimHeight + "px",
+            width: activeWidthNewAnimWidth + "px"
+          });
+        });
+      }
+      $(document).ready(function () {
+        setTimeout(function () {
+          test();
+        });
+      });
+      $(window).on("resize", function () {
+        setTimeout(function () {
+          test();
+        }, 500);
+      });
+      $(".navbar-toggler").click(function () {
+        $(".navbar-collapse").slideToggle(300);
+        setTimeout(function () {
+          test();
+        });
+      });
+
+      // --------------add active class-on another-page move----------
+      jQuery(document).ready(function ($) {
+        // Get current path and find target link
+        var path = window.location.pathname.split("/").pop();
+
+        // Account for home page with empty path
+        if (path === "") {
+          path = "index.html";
+        }
+
+        var target = $('#navbarSupportedContent ul li a[href="' + path + '"]');
+        // Add active class to target link
+        target.parent().addClass("active");
+      });
+
       const fab = document.querySelector(".ai-fab");
       const chat = document.querySelector(".ai-chat");
       const closeButton = document.querySelector(".ai-chat__close");
