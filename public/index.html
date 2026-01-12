@@ -264,10 +264,16 @@
       }
 
       .hero-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        display: flex;
+        flex-direction: column;
         gap: 32px;
-        align-items: start;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 760px;
+        margin: 0 auto;
       }
 
       .hero-content p {
@@ -284,8 +290,10 @@
         border: 1px solid rgba(255, 255, 255, 0.08);
         display: grid;
         gap: 20px;
-        overflow: hidden;
-        min-height: 360px;
+        overflow: visible;
+        min-height: 100vh;
+        width: min(100%, 1100px);
+        margin: 0 auto;
       }
 
       .hero-workflow::before {
@@ -304,6 +312,8 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
+        align-items: center;
+        text-align: center;
       }
 
       .hero-workflow__eyebrow {
@@ -323,6 +333,7 @@
         font-size: 0.98rem;
         color: rgba(245, 247, 250, 0.8);
         max-width: 440px;
+        margin: 0 auto;
       }
 
       .hero-workflow__map {
@@ -332,11 +343,12 @@
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.14);
-        overflow: hidden;
+        overflow: visible;
         padding: 24px;
         display: flex;
         align-items: stretch;
         justify-content: center;
+        width: 100%;
       }
 
       .hero-workflow__routes {
@@ -493,6 +505,7 @@
         gap: 16px;
         margin-top: 24px;
         flex-wrap: wrap;
+        justify-content: center;
       }
 
       .button {
