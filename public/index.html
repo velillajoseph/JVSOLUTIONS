@@ -286,9 +286,6 @@
         gap: 20px;
         overflow: hidden;
         min-height: 320px;
-        max-width: 520px;
-        width: 100%;
-        justify-self: start;
       }
 
       .hero-visual::before {
@@ -335,30 +332,6 @@
         gap: 14px;
       }
 
-      .hero-visual__flow::before {
-        content: "";
-        position: absolute;
-        left: 9px;
-        top: 6px;
-        bottom: 6px;
-        width: 2px;
-        background: linear-gradient(180deg, rgba(244, 196, 0, 0.35), rgba(244, 196, 0, 0.05));
-        opacity: 0.8;
-      }
-
-      .hero-visual__flow::after {
-        content: "";
-        position: absolute;
-        left: 4px;
-        top: -12px;
-        width: 12px;
-        height: 12px;
-        border-radius: 999px;
-        background: #f4c400;
-        box-shadow: 0 0 18px rgba(244, 196, 0, 0.8);
-        animation: flow-scan 4.5s ease-in-out infinite;
-      }
-
       .hero-visual__step {
         display: grid;
         grid-template-columns: 20px 1fr;
@@ -368,13 +341,6 @@
         background: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(6px);
-        position: relative;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-
-      .hero-visual__step:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 16px 28px rgba(8, 15, 26, 0.35);
       }
 
       .hero-visual__step h4 {
@@ -397,43 +363,6 @@
         margin-top: 6px;
         box-shadow: 0 0 12px rgba(244, 196, 0, 0.6);
         animation: pulse-dot 3.6s ease-in-out infinite;
-      }
-
-      .hero-visual__tooltip {
-        position: absolute;
-        left: 36px;
-        top: 100%;
-        margin-top: 10px;
-        padding: 12px 14px;
-        border-radius: 12px;
-        background: rgba(6, 14, 24, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 18px 36px rgba(6, 14, 25, 0.45);
-        width: min(280px, 70vw);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-6px);
-        transition: opacity 0.2s ease, transform 0.2s ease;
-        z-index: 5;
-      }
-
-      .hero-visual__step:hover .hero-visual__tooltip,
-      .hero-visual__step:focus-within .hero-visual__tooltip {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      .hero-visual__tooltip h5 {
-        margin: 0 0 6px;
-        font-size: 0.92rem;
-        color: #ffffff;
-      }
-
-      .hero-visual__tooltip p {
-        margin: 0;
-        font-size: 0.82rem;
-        color: rgba(245, 247, 250, 0.75);
       }
 
       .hero-visual__insights {
@@ -488,14 +417,6 @@
         50% { transform: scale(1.25); opacity: 1; }
       }
 
-      @keyframes flow-scan {
-        0% { transform: translateY(0); opacity: 0; }
-        10% { opacity: 1; }
-        50% { transform: translateY(92px); opacity: 1; }
-        90% { opacity: 1; }
-        100% { transform: translateY(184px); opacity: 0; }
-      }
-
       @keyframes meter-sweep {
         0%, 100% { width: 78%; }
         50% { width: 96%; }
@@ -503,13 +424,8 @@
 
       @media (prefers-reduced-motion: reduce) {
         .hero-visual__dot,
-        .hero-visual__meter::after,
-        .hero-visual__flow::after {
+        .hero-visual__meter::after {
           animation: none;
-        }
-
-        .hero-visual__step {
-          transition: none;
         }
       }
 
@@ -996,37 +912,25 @@
               </p>
             </div>
             <div class="hero-visual__flow">
-              <div class="hero-visual__step" tabindex="0">
+              <div class="hero-visual__step">
                 <span class="hero-visual__dot" aria-hidden="true"></span>
                 <div>
                   <h4>Assess &amp; Align</h4>
                   <p>Mission goals, stakeholder priorities, and modernization readiness.</p>
                 </div>
-                <div class="hero-visual__tooltip" role="note">
-                  <h5>Assessment Workshop</h5>
-                  <p>We map current-state systems, define stakeholder priorities, and create a mission-aligned roadmap.</p>
-                </div>
               </div>
-              <div class="hero-visual__step" tabindex="0">
+              <div class="hero-visual__step">
                 <span class="hero-visual__dot" aria-hidden="true"></span>
                 <div>
                   <h4>Secure the Architecture</h4>
                   <p>Zero-trust planning, compliance pathways, and risk reduction.</p>
                 </div>
-                <div class="hero-visual__tooltip" role="note">
-                  <h5>Security Engineering</h5>
-                  <p>Threat modeling, ATO strategy, and zero-trust controls designed into every milestone.</p>
-                </div>
               </div>
-              <div class="hero-visual__step" tabindex="0">
+              <div class="hero-visual__step">
                 <span class="hero-visual__dot" aria-hidden="true"></span>
                 <div>
                   <h4>Deliver with Insight</h4>
                   <p>Dashboards, automation, and governance that keep programs on track.</p>
-                </div>
-                <div class="hero-visual__tooltip" role="note">
-                  <h5>Performance &amp; Insights</h5>
-                  <p>Real-time reporting and analytics that keep leadership informed and delivery predictable.</p>
                 </div>
               </div>
             </div>
