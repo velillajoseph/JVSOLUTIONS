@@ -72,7 +72,7 @@
         display: flex;
         align-items: center;
         gap: 20px;
-        width: min(940px, calc(100% - 32px));
+        width: min(1120px, calc(100% - 32px));
         margin: 0 auto;
         pointer-events: auto;
         animation: nav-rise 0.9s ease-out both;
@@ -858,6 +858,84 @@
         color: var(--muted);
       }
 
+      .contact-form {
+        margin-top: 24px;
+        display: grid;
+        gap: 16px;
+        max-width: 720px;
+      }
+
+      .contact-form label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(11, 28, 45, 0.2);
+        background: #ffffff;
+        color: #0b1c2d;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+      }
+
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: rgba(11, 28, 45, 0.6);
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: rgba(17, 34, 56, 0.45);
+        box-shadow: 0 0 0 2px rgba(17, 34, 56, 0.18);
+      }
+
+      .contact-form__row {
+        display: grid;
+        gap: 12px;
+      }
+
+      .contact-form__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .contact-form__actions span {
+        color: rgba(11, 28, 45, 0.85);
+      }
+
+      .contact-form__actions a {
+        color: rgba(11, 28, 45, 0.85);
+        font-weight: 600;
+      }
+
+      .contact-form__note {
+        margin-top: 12px;
+        font-size: 0.95rem;
+        color: rgba(11, 28, 45, 0.75);
+      }
+
+      .focus-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+        align-items: center;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+        align-items: center;
+      }
+
       @keyframes fab-float {
         0%,
         100% {
@@ -970,6 +1048,14 @@
           align-items: stretch;
         }
 
+        .focus-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
         .cta-group .button {
           width: 100%;
           text-align: center;
@@ -1032,9 +1118,10 @@
         </div>
         <div class="floating-nav__menu" id="primary-menu">
           <div class="floating-nav__links">
+            <a class="floating-nav__link" href="#focus">Consulting Focus</a>
             <a class="floating-nav__link" href="#services">Services</a>
             <a class="floating-nav__link" href="#approach">Advisory Approach</a>
-            <a class="floating-nav__link" href="#case-highlights">Client Highlights</a>
+            <a class="floating-nav__link" href="#case-highlights">Case Highlights</a>
             <a class="floating-nav__link" href="#about">About Us</a>
           </div>
           <a class="floating-nav__cta" href="#contact">Contact Us</a>
@@ -1177,49 +1264,62 @@
         </div>
       </section>
 
+      <section id="focus">
+        <h2>Technology Consulting Focus</h2>
+        <div class="focus-grid">
+          <div>
+            <p>
+              JV Solutions is a general technology consulting firm helping organizations modernize how they operate
+              through digital transformation, process optimization, and intelligent automation. Our teams design
+              data-driven solutions and modern web and software technologies that improve performance, clarity, and
+              decision-making across evolving business priorities.
+            </p>
+            <p>
+              We support organizations across multiple industries with a vendor-neutral approach that balances
+              strategy, execution, and long-term maintainability.
+            </p>
+          </div>
+          <div class="section-image">
+            <img
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+              alt="Technology consulting team reviewing digital systems and analytics"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
       <section id="services">
         <h2>Services</h2>
         <p>Vendor-neutral, industry-agnostic consulting designed to move strategy into measurable delivery.</p>
         <div class="grid">
           <div class="panel">
-            <h3>Technology Consulting</h3>
-            <ul>
-              <li>Digital transformation strategy and roadmaps</li>
-              <li>Cloud, infrastructure, and platform planning</li>
-              <li>Operating model and team enablement</li>
-            </ul>
+            <h3>Technology Consulting &amp; Advisory</h3>
+            <p>
+              Shape modernization strategies, operating models, and integration roadmaps that align to business
+              objectives, scalable architecture, and measurable outcomes.
+            </p>
           </div>
           <div class="panel">
-            <h3>Software &amp; Automation Solutions</h3>
-            <ul>
-              <li>Custom applications and workflow automation</li>
-              <li>Integration of tools, APIs, and platforms</li>
-              <li>Secure software delivery and QA</li>
-            </ul>
+            <h3>Software Development &amp; Automation</h3>
+            <p>
+              Build tailored applications and workflow automation that reduce manual effort, improve service quality,
+              and accelerate delivery.
+            </p>
           </div>
           <div class="panel">
-            <h3>Data &amp; Process Optimization</h3>
-            <ul>
-              <li>Data strategy, pipelines, and governance</li>
-              <li>Operational analytics and KPI dashboards</li>
-              <li>Process mapping and continuous improvement</li>
-            </ul>
+            <h3>Data Engineering &amp; Process Optimization</h3>
+            <p>
+              Create reliable data pipelines, performance metrics, and optimized processes that drive informed
+              decisions and operational efficiency.
+            </p>
           </div>
           <div class="panel">
             <h3>Web &amp; Digital Solutions</h3>
-            <ul>
-              <li>Company landing pages and brand sites</li>
-              <li>Product experiences and customer portals</li>
-              <li>Content design and accessibility alignment</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h3>Technical Advisory Services</h3>
-            <ul>
-              <li>Technology assessments and architecture reviews</li>
-              <li>Vendor selection and solution evaluation</li>
-              <li>Delivery oversight and risk management</li>
-            </ul>
+            <p>
+              Deliver modern web experiences, customer portals, and digital platforms that strengthen engagement and
+              create consistent user journeys.
+            </p>
           </div>
         </div>
         <div class="section-image">
@@ -1257,19 +1357,29 @@
       </section>
 
       <section id="case-highlights">
-        <h2>Client Highlights</h2>
+        <h2>Case Highlights</h2>
         <div class="grid">
           <div class="panel highlight">
             <h3>Platform Modernization</h3>
-            <p>Delivered a phased migration strategy that improved reliability and reduced operating costs.</p>
+            <p>
+              A client in a complex enterprise environment needed to consolidate legacy platforms. We mapped
+              dependencies, staged migrations, and delivered a modernized stack that improved reliability and lowered
+              operating costs.
+            </p>
           </div>
           <div class="panel highlight">
             <h3>Automation Enablement</h3>
-            <p>Implemented workflow automation to streamline approvals and reduce cycle time.</p>
+            <p>
+              An organization sought faster turnaround on high-volume operational tasks. We redesigned workflows,
+              introduced automation, and reduced cycle time while improving handoffs and visibility.
+            </p>
           </div>
           <div class="panel highlight">
             <h3>Executive Analytics</h3>
-            <p>Built leadership dashboards to accelerate data-informed decision-making.</p>
+            <p>
+              A client needed consistent performance reporting across teams. We built governance-ready dashboards and
+              metrics that enabled leaders to make faster, data-driven decisions.
+            </p>
           </div>
         </div>
         <div class="section-image">
@@ -1283,47 +1393,58 @@
 
       <section id="about">
         <h2>About Us</h2>
-        <p>
-          JV Solutions LLC is a technology consulting firm that helps organizations design practical
-          strategies, modernize legacy environments, and deliver digital solutions that scale with growth.
-        </p>
-        <div class="grid">
-          <div class="panel">
-            <h3>Mission</h3>
-            <p>Guide clients to adopt modern technology with clarity, resilience, and measurable results.</p>
+        <div class="about-grid">
+          <div>
+            <p>
+              JV Solutions LLC is a modern, independent technology consulting firm providing advisory, technical, and
+              implementation support for organizations seeking practical, scalable change. We work through a
+              structured, methodical, and solution-oriented approach that reflects integrity, transparency, technical
+              excellence, and a commitment to long-term partnerships.
+            </p>
+            <p>
+              Clients benefit from clear direction, operational efficiency, and solutions designed to be scalable and
+              maintainable as priorities evolve.
+            </p>
           </div>
-          <div class="panel">
-            <h3>Vision</h3>
-            <p>Be a trusted partner for organizations seeking reliable, human-centered digital change.</p>
+          <div class="section-image">
+            <img
+              src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=80"
+              alt="Consulting team collaborating on strategy in a modern office"
+              loading="lazy"
+            />
           </div>
-          <div class="panel">
-            <h3>Values</h3>
-            <p>Integrity, transparency, and collaborative delivery that prioritizes long-term outcomes.</p>
-          </div>
-        </div>
-        <div class="section-image">
-          <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80"
-            alt="Leadership team discussing a project plan in a modern workspace"
-            loading="lazy"
-          />
         </div>
       </section>
 
       <section id="contact">
-        <h2>Contact / CTA</h2>
+        <h2>Contact Us</h2>
         <p>
-          Ready to align your modernization roadmap with business priorities? Let’s discuss how JV Solutions
-          can support your next milestone.
+          We welcome the opportunity to connect and discuss your needs in a thoughtful, low-pressure conversation.
         </p>
-        <p>
-          We collaborate transparently, respect confidentiality, and align delivery with applicable standards and
-          policies.
-        </p>
-        <div class="cta-group">
-          <a class="button" href="mailto:info@jvsolutions-llc.com">Schedule a Consultation</a>
-          <a class="button secondary" href="mailto:info@jvsolutions-llc.com">Request a Service Overview</a>
-        </div>
+        <p>Inquiries are reviewed promptly, and we will respond as quickly as possible.</p>
+        <form class="contact-form">
+          <div class="contact-form__row">
+            <label for="contact-name">Full Name</label>
+            <input id="contact-name" name="contact-name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="contact-form__row">
+            <label for="contact-email">Email Address</label>
+            <input id="contact-email" name="contact-email" type="email" placeholder="you@company.com" required />
+          </div>
+          <div class="contact-form__row">
+            <label for="contact-organization">Organization (optional)</label>
+            <input id="contact-organization" name="contact-organization" type="text" placeholder="Organization name" />
+          </div>
+          <div class="contact-form__row">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="contact-message" rows="4" placeholder="Share a brief overview" required></textarea>
+          </div>
+          <div class="contact-form__actions">
+            <button class="button" type="submit">Start a conversation</button>
+            <span>Or discuss your needs at <a href="mailto:info@jvsolutions-llc.com">info@jvsolutions-llc.com</a>.</span>
+          </div>
+        </form>
+        <p class="contact-form__note">We review every inquiry and respond promptly.</p>
       </section>
     </main>
 
@@ -1357,7 +1478,7 @@
           <p class="footer-title">Capabilities</p>
           <a class="footer-link" href="#services">Services</a><br />
           <a class="footer-link" href="#approach">Advisory Approach</a><br />
-          <a class="footer-link" href="#case-highlights">Client Highlights</a>
+          <a class="footer-link" href="#case-highlights">Case Highlights</a>
         </div>
         <div>
           <p class="footer-title">Connect</p>
