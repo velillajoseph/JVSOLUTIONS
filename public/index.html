@@ -25,6 +25,10 @@
         --section-padding: 64px;
         --card-radius: 14px;
         --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+        --space-16: 16px;
+        --space-24: 24px;
+        --space-32: 32px;
+        --space-48: 48px;
       }
 
       * {
@@ -263,40 +267,42 @@
         padding-top: 4px;
       }
 
-      .hero-grid {
+      .hero__inner {
+        display: grid;
+        gap: var(--space-32);
+        align-items: start;
+      }
+
+      .hero__content {
         display: flex;
         flex-direction: column;
-        gap: 32px;
-        align-items: center;
-        text-align: center;
+        gap: var(--space-24);
+        max-width: 560px;
       }
 
-      .hero-content {
-        max-width: 760px;
-        margin: 0 auto;
+      .hero__content h1,
+      .hero__content p {
+        margin: 0;
       }
 
-      .hero-content p {
+      .hero__content p {
         font-size: 1.05rem;
       }
 
-      .hero-workflow {
+      .hero__media {
         position: relative;
         border-radius: 26px;
-        padding: 28px;
+        padding: var(--space-32);
         background: linear-gradient(145deg, #0d1f33 0%, #0a1626 100%);
         color: #f5f7fa;
         box-shadow: var(--shadow);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        display: grid;
-        gap: 20px;
         overflow: hidden;
-        min-height: 100vh;
-        width: min(100%, 1100px);
-        margin: 0 auto;
+        display: grid;
+        gap: var(--space-24);
       }
 
-      .hero-workflow::before {
+      .hero__media::before {
         content: "";
         position: absolute;
         inset: 0;
@@ -306,279 +312,121 @@
         pointer-events: none;
       }
 
-      .hero-workflow__header {
+      .hero__media-header {
         position: relative;
         z-index: 1;
         display: flex;
         flex-direction: column;
         gap: 8px;
-        align-items: center;
-        text-align: center;
       }
 
-      .hero-workflow__eyebrow {
+      .hero__media-eyebrow {
         text-transform: uppercase;
         letter-spacing: 0.18em;
         font-size: 0.75rem;
         color: rgba(255, 255, 255, 0.7);
       }
 
-      .hero-workflow__title {
+      .hero__media-title {
         font-family: "Manrope", "Inter", sans-serif;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         margin: 0;
       }
 
-      .hero-workflow__subtitle {
+      .hero__media-subtitle {
         font-size: 0.98rem;
-        color: rgba(245, 247, 250, 0.8);
-        max-width: 440px;
-        margin: 0 auto;
+        color: rgba(245, 247, 250, 0.82);
+        margin: 0;
+        max-width: 360px;
       }
 
-      .hero-workflow__steps {
+      .hero__mosaic {
         position: relative;
         z-index: 1;
-        display: none;
-        gap: 12px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .hero-workflow__step {
-        display: grid;
-        gap: 6px;
-        padding: 14px 16px;
-        border-radius: 16px;
-        background: rgba(11, 28, 45, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .hero-workflow__step-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        font-size: 0.95rem;
-      }
-
-      .hero-workflow__step-index {
-        display: grid;
-        place-items: center;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background: rgba(244, 196, 0, 0.16);
-        color: #f4c400;
-        font-size: 0.82rem;
-        letter-spacing: 0.08em;
-      }
-
-      .hero-workflow__step-text {
-        margin: 0;
-        color: rgba(245, 247, 250, 0.8);
-        font-size: 0.92rem;
-      }
-
-      .hero-workflow__map {
-        position: relative;
-        z-index: 1;
-        min-height: 340px;
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.14);
-        overflow: visible;
-        padding: 24px;
-        display: flex;
-        align-items: stretch;
-        justify-content: center;
-        width: 100%;
+        overflow: hidden;
+        padding: var(--space-24);
       }
 
-      .hero-workflow__routes {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        opacity: 0.8;
-      }
-
-      .hero-workflow__route {
-        fill: none;
-        stroke-width: 2.4;
-        stroke-linecap: round;
-        stroke-dasharray: 6 8;
-        animation: route-flow 6s linear infinite;
-      }
-
-      .hero-workflow__route--primary {
-        stroke: rgba(244, 196, 0, 0.7);
-      }
-
-      .hero-workflow__route--secondary {
-        stroke: rgba(120, 176, 255, 0.6);
-        animation-duration: 7.5s;
-      }
-
-      .hero-workflow__tracker {
-        filter: drop-shadow(0 0 10px rgba(244, 196, 0, 0.8));
-      }
-
-      .hero-workflow__tracker--primary {
-        fill: #f4c400;
-      }
-
-      .hero-workflow__tracker--secondary {
-        fill: #78b0ff;
-        filter: drop-shadow(0 0 10px rgba(120, 176, 255, 0.75));
-      }
-
-      .workflow-node {
-        position: absolute;
+      .hero__mosaic-grid {
         display: grid;
-        gap: 6px;
-        justify-items: center;
-        text-align: center;
-        padding: 10px 14px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-16);
+      }
+
+      .hero__mosaic-card {
+        background: rgba(11, 28, 45, 0.65);
         border-radius: 16px;
-        background: rgba(11, 28, 45, 0.72);
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        color: #ffffff;
-        font-size: 0.86rem;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        padding: 16px;
+        display: grid;
+        gap: 10px;
+        min-height: 140px;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .hero__mosaic-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(244, 196, 0, 0.55);
+        box-shadow: 0 16px 30px rgba(5, 10, 20, 0.25);
+      }
+
+      .hero__mosaic-icon {
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: rgba(244, 196, 0, 0.14);
+        color: #f4c400;
+      }
+
+      .hero__mosaic-icon svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        fill: none;
+      }
+
+      .hero__mosaic-title {
+        font-size: 1rem;
         font-weight: 600;
-        letter-spacing: 0.01em;
-        transform: translate(-50%, -50%);
-        cursor: pointer;
-        z-index: 3;
-        transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-      }
-
-      .workflow-node::before {
-        content: "";
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #f4c400;
-        box-shadow: 0 0 10px rgba(244, 196, 0, 0.8);
-      }
-
-      .workflow-node:hover,
-      .workflow-node:focus-visible {
-        box-shadow: 0 0 24px rgba(244, 196, 0, 0.5);
-        border-color: rgba(244, 196, 0, 0.6);
-        outline: none;
-        transform: translate(-50%, -50%) scale(1.02);
-      }
-
-      .workflow-card {
-        position: absolute;
-        bottom: calc(100% + 12px);
-        top: auto;
-        left: 50%;
-        transform: translate(-50%, -8px);
-        background: #ffffff;
-        color: var(--text);
-        padding: 14px 16px;
-        border-radius: 14px;
-        width: 220px;
-        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.24);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        z-index: 4;
-      }
-
-      .workflow-card h4 {
-        margin: 0 0 6px;
-        font-size: 0.95rem;
-        color: var(--text);
-      }
-
-      .workflow-card p {
+        color: #ffffff;
         margin: 0;
-        font-size: 0.85rem;
-        color: var(--muted);
       }
 
-      .workflow-node:hover .workflow-card,
-      .workflow-node:focus-visible .workflow-card {
-        opacity: 1;
-        transform: translate(-50%, 0);
+      .hero__mosaic-text {
+        font-size: 0.9rem;
+        color: rgba(245, 247, 250, 0.78);
+        margin: 0;
       }
 
-      .workflow-node--intake { top: 72%; left: 18%; }
-      .workflow-node--strategy { top: 20%; left: 42%; }
-      .workflow-node--secure { top: 34%; left: 72%; }
-      .workflow-node--deliver { top: 58%; left: 74%; }
-      .workflow-node--optimize { top: 82%; left: 42%; }
+      @media (min-width: 900px) {
+        .hero__inner {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          gap: var(--space-48);
+        }
 
-      @keyframes route-flow {
-        0% { stroke-dashoffset: 0; }
-        100% { stroke-dashoffset: -120; }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .hero-workflow__route,
-        .hero-workflow__tracker {
-          animation: none;
+        .hero__content {
+          padding-top: var(--space-16);
         }
       }
 
       @media (max-width: 768px) {
-        .hero-workflow {
-          min-height: auto;
-          padding: 20px;
-          gap: 16px;
-        }
-
-        .hero-workflow__header {
-          align-items: flex-start;
+        .hero__inner {
+          gap: var(--space-24);
           text-align: left;
         }
 
-        .hero-workflow__title {
-          font-size: 1.2rem;
+        .hero__media {
+          padding: var(--space-24);
         }
 
-        .hero-workflow__subtitle {
-          max-width: none;
-        }
-
-        .hero-workflow__steps {
-          display: grid;
-        }
-
-        .hero-workflow__map {
-          display: none;
-        }
-
-        .workflow-node {
-          position: static;
-          transform: none;
-          width: min(100%, 320px);
-          grid-template-columns: auto 1fr;
-          gap: 10px 14px;
-          justify-items: start;
-          text-align: left;
-          padding: 14px 16px;
-        }
-
-        .workflow-card {
-          position: static;
-          opacity: 1;
-          pointer-events: auto;
-          transform: none;
-          width: 100%;
-          margin-top: 6px;
-          background: rgba(255, 255, 255, 0.94);
-          box-shadow: 0 12px 24px rgba(15, 23, 42, 0.14);
-        }
-
-        .workflow-node:hover .workflow-card,
-        .workflow-node:focus-visible .workflow-card {
-          transform: none;
+        .hero__mosaic-grid {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -590,9 +438,9 @@
       .cta-group {
         display: flex;
         gap: 16px;
-        margin-top: 24px;
+        margin-top: 0;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-start;
       }
 
       .button {
@@ -1175,8 +1023,8 @@
 
     <main class="container">
       <section id="hero" class="hero">
-        <div class="hero-grid">
-          <div class="hero-content">
+        <div class="hero__inner">
+          <div class="hero__content">
             <h1>Technology consulting built for business-critical outcomes.</h1>
             <p class="tagline">
               JV Solutions partners with organizations to modernize systems, automate workflows, and deliver
@@ -1187,121 +1035,58 @@
               <a class="button secondary" href="#services">View Service Overview</a>
             </div>
           </div>
-          <div class="hero-workflow" role="group" aria-label="JV Solutions delivery workflow">
-            <div class="hero-workflow__header">
-              <span class="hero-workflow__eyebrow">Delivery Workflow</span>
-              <h3 class="hero-workflow__title">A guided path for secure, on-time service delivery.</h3>
-              <p class="hero-workflow__subtitle">
-                Navigate every engagement with strategic intake, secure build cycles, and measurable outcomes
-                aligned to business goals.
+          <div class="hero__media" role="group" aria-label="Digital systems in motion">
+            <div class="hero__media-header">
+              <span class="hero__media-eyebrow">Capability Mosaic</span>
+              <h3 class="hero__media-title">Capabilities aligned to business-critical outcomes.</h3>
+              <p class="hero__media-subtitle">
+                A concise view of how we modernize systems and deliver durable, high-impact results.
               </p>
             </div>
-            <ol class="hero-workflow__steps">
-              <li class="hero-workflow__step">
-                <div class="hero-workflow__step-header">
-                  <span class="hero-workflow__step-index">01</span>
-                  <span>Discovery &amp; Intake</span>
-                </div>
-                <p class="hero-workflow__step-text">
-                  Align scope, success metrics, and stakeholders before delivery begins.
-                </p>
-              </li>
-              <li class="hero-workflow__step">
-                <div class="hero-workflow__step-header">
-                  <span class="hero-workflow__step-index">02</span>
-                  <span>Strategy &amp; Roadmap</span>
-                </div>
-                <p class="hero-workflow__step-text">
-                  Define milestones, risk checkpoints, and phased modernization.
-                </p>
-              </li>
-              <li class="hero-workflow__step">
-                <div class="hero-workflow__step-header">
-                  <span class="hero-workflow__step-index">03</span>
-                  <span>Secure Build</span>
-                </div>
-                <p class="hero-workflow__step-text">
-                  Deliver resilient architecture, security alignment, and risk mitigation.
-                </p>
-              </li>
-              <li class="hero-workflow__step">
-                <div class="hero-workflow__step-header">
-                  <span class="hero-workflow__step-index">04</span>
-                  <span>Delivery &amp; Launch</span>
-                </div>
-                <p class="hero-workflow__step-text">
-                  Deploy with governance, training, and rollout support.
-                </p>
-              </li>
-              <li class="hero-workflow__step">
-                <div class="hero-workflow__step-header">
-                  <span class="hero-workflow__step-index">05</span>
-                  <span>Optimize &amp; Support</span>
-                </div>
-                <p class="hero-workflow__step-text">
-                  Continuous monitoring, analytics insights, and long-term enhancements.
-                </p>
-              </li>
-            </ol>
-            <div class="hero-workflow__map" aria-hidden="true">
-              <svg class="hero-workflow__routes" viewBox="0 0 480 300" preserveAspectRatio="none">
-                <path
-                  class="hero-workflow__route hero-workflow__route--primary"
-                  d="M 30 230 C 110 160 190 140 260 120 C 330 100 390 130 430 170 C 470 210 430 250 370 270 C 300 295 210 270 150 240 C 100 215 70 210 30 230"
-                />
-                <path
-                  class="hero-workflow__route hero-workflow__route--secondary"
-                  d="M 40 80 C 120 40 240 60 330 120 C 380 155 410 200 380 230 C 340 270 260 280 190 250 C 120 220 80 180 60 140 C 50 110 45 95 40 80"
-                />
-                <circle class="hero-workflow__tracker hero-workflow__tracker--primary" r="6">
-                  <animateMotion
-                    dur="8s"
-                    repeatCount="indefinite"
-                    path="M 30 230 C 110 160 190 140 260 120 C 330 100 390 130 430 170 C 470 210 430 250 370 270 C 300 295 210 270 150 240 C 100 215 70 210 30 230"
-                  />
-                </circle>
-                <circle class="hero-workflow__tracker hero-workflow__tracker--secondary" r="6">
-                  <animateMotion
-                    dur="10s"
-                    repeatCount="indefinite"
-                    path="M 40 80 C 120 40 240 60 330 120 C 380 155 410 200 380 230 C 340 270 260 280 190 250 C 120 220 80 180 60 140 C 50 110 45 95 40 80"
-                  />
-                </circle>
-              </svg>
-              <div class="workflow-node workflow-node--intake" tabindex="0" role="button" aria-label="Discovery and intake">
-                Discovery &amp; Intake
-                <div class="workflow-card">
-                  <h4>Discovery &amp; Intake</h4>
-                  <p>Align scope, success metrics, and stakeholders before delivery begins.</p>
-                </div>
-              </div>
-              <div class="workflow-node workflow-node--strategy" tabindex="0" role="button" aria-label="Strategy and roadmap">
-                Strategy &amp; Roadmap
-                <div class="workflow-card">
-                  <h4>Strategy &amp; Roadmap</h4>
-                  <p>Define milestones, risk checkpoints, and phased modernization.</p>
-                </div>
-              </div>
-              <div class="workflow-node workflow-node--secure" tabindex="0" role="button" aria-label="Secure build and risk alignment">
-                Secure Build
-                <div class="workflow-card">
-                  <h4>Secure Build</h4>
-                  <p>Deliver resilient architecture, security alignment, and risk mitigation.</p>
-                </div>
-              </div>
-              <div class="workflow-node workflow-node--deliver" tabindex="0" role="button" aria-label="Delivery and launch">
-                Delivery &amp; Launch
-                <div class="workflow-card">
-                  <h4>Delivery &amp; Launch</h4>
-                  <p>Deploy with governance, training, and rollout support.</p>
-                </div>
-              </div>
-              <div class="workflow-node workflow-node--optimize" tabindex="0" role="button" aria-label="Optimization and support">
-                Optimize &amp; Support
-                <div class="workflow-card">
-                  <h4>Optimize &amp; Support</h4>
-                  <p>Continuous monitoring, analytics insights, and long-term enhancements.</p>
-                </div>
+            <div class="hero__mosaic">
+              <div class="hero__mosaic-grid">
+                <article class="hero__mosaic-card">
+                  <span class="hero__mosaic-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 7h8M5 12h14M5 17h10" />
+                      <path d="M16 5v4M19 12v4" />
+                    </svg>
+                  </span>
+                  <h4 class="hero__mosaic-title">Automation</h4>
+                  <p class="hero__mosaic-text">Streamline workflows and reduce manual effort.</p>
+                </article>
+                <article class="hero__mosaic-card">
+                  <span class="hero__mosaic-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4 16c2.5-3 5-4.5 8-4.5s5.5 1.5 8 4.5" />
+                      <path d="M6 9h4M14 7h4" />
+                      <circle cx="8" cy="9" r="1.5" />
+                      <circle cx="16" cy="7" r="1.5" />
+                    </svg>
+                  </span>
+                  <h4 class="hero__mosaic-title">Data Solutions</h4>
+                  <p class="hero__mosaic-text">Improve data quality and decision readiness.</p>
+                </article>
+                <article class="hero__mosaic-card">
+                  <span class="hero__mosaic-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="4" y="5" width="16" height="12" rx="2" />
+                      <path d="M8 19h8" />
+                    </svg>
+                  </span>
+                  <h4 class="hero__mosaic-title">Modern Web</h4>
+                  <p class="hero__mosaic-text">Build fast, accessible digital experiences.</p>
+                </article>
+                <article class="hero__mosaic-card">
+                  <span class="hero__mosaic-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M7 7h4v4H7zM13 13h4v4h-4z" />
+                      <path d="M11 9h2M9 11v2M15 13v-2M13 15h-2" />
+                    </svg>
+                  </span>
+                  <h4 class="hero__mosaic-title">Integration</h4>
+                  <p class="hero__mosaic-text">Connect systems with reliable interfaces.</p>
+                </article>
               </div>
             </div>
           </div>
