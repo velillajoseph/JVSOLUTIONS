@@ -72,7 +72,7 @@
         display: flex;
         align-items: center;
         gap: 20px;
-        width: min(1120px, calc(100% - 32px));
+        width: min(1200px, calc(100% - 32px));
         margin: 0 auto;
         pointer-events: auto;
         animation: nav-rise 0.9s ease-out both;
@@ -109,10 +109,10 @@
       .floating-nav__links {
         display: flex;
         align-items: center;
-        gap: 18px;
+        gap: 16px;
         flex: 1;
         justify-content: center;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
       }
 
       .floating-nav__link {
@@ -631,6 +631,35 @@
         margin-top: 20px;
       }
 
+      .services-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .focus-grid,
+      .about-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 36px;
+        align-items: center;
+      }
+
+      .section-media {
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        background: #ffffff;
+        min-height: 320px;
+      }
+
+      .section-media img,
+      .section-media video {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
       .panel {
         border: 1px solid var(--border);
         padding: 24px;
@@ -676,6 +705,33 @@
         display: block;
         object-fit: cover;
         max-height: 320px;
+      }
+
+      #contact {
+        background: linear-gradient(135deg, #0b1c2d 0%, #11263d 100%);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 64px;
+        color: #f8fafc;
+      }
+
+      #contact h2 {
+        color: #ffffff;
+      }
+
+      #contact p,
+      #contact .contact-form__actions span,
+      #contact .contact-form__note {
+        color: rgba(248, 250, 252, 0.78);
+      }
+
+      #contact a {
+        color: #f4c400;
+      }
+
+      #contact a:hover,
+      #contact a:focus-visible {
+        color: #ffd75a;
       }
 
       footer {
@@ -945,6 +1001,12 @@
         }
       }
 
+      @media (max-width: 1100px) {
+        .services-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
       @media (max-width: 720px) {
         header {
           top: 16px;
@@ -1002,6 +1064,7 @@
           flex-direction: column;
           gap: 8px;
           justify-content: flex-start;
+          flex-wrap: wrap;
         }
 
         .floating-nav__link {
@@ -1031,6 +1094,10 @@
 
         .about-grid {
           grid-template-columns: 1fr;
+        }
+
+        #contact {
+          padding: 48px 24px;
         }
 
         .cta-group .button {
@@ -1242,56 +1309,60 @@
       </section>
 
       <section id="focus">
-        <h2>Technology Consulting Focus</h2>
-        <p>
-          JV Solutions is a general technology consulting firm helping organizations modernize how they operate
-          through digital transformation, process optimization, and intelligent automation. Our teams design
-          data-driven solutions and modern web and software technologies that improve performance, clarity, and
-          decision-making across evolving business priorities.
-        </p>
-        <p>
-          We support organizations across multiple industries with a vendor-neutral approach that balances strategy,
-          execution, and long-term maintainability.
-        </p>
+        <div class="focus-grid">
+          <div>
+            <h2>Technology Consulting Focus</h2>
+            <p>
+              JV Solutions is a general technology consulting firm helping organizations modernize how they operate
+              through digital transformation, process optimization, and intelligent automation. Our teams design
+              data-driven solutions and modern web and software technologies that improve performance, clarity, and
+              decision-making across evolving business priorities.
+            </p>
+            <p>
+              We support organizations across multiple industries with a vendor-neutral approach that balances strategy,
+              execution, and long-term maintainability.
+            </p>
+          </div>
+          <div class="section-media">
+            <img
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80"
+              alt="Abstract view of a modern workspace with technology interfaces"
+              loading="lazy"
+            />
+          </div>
+        </div>
       </section>
 
       <section id="services">
         <h2>Services</h2>
         <p>Vendor-neutral, industry-agnostic consulting designed to move strategy into measurable delivery.</p>
-        <div class="grid">
+        <div class="grid services-grid">
           <div class="panel">
-            <h3>Technology Consulting &amp; Advisory</h3>
+            <h3>Strategy &amp; Advisory</h3>
             <p>
-              Shape modernization strategies, operating models, and technology roadmaps that align to business
-              objectives and measurable outcomes.
+              Shape modernization strategies, operating models, and integration roadmaps aligned to business objectives
+              and measurable outcomes.
             </p>
           </div>
           <div class="panel">
-            <h3>Software Development &amp; Automation</h3>
+            <h3>Software Engineering &amp; Automation</h3>
             <p>
               Build tailored applications and workflow automation that reduce manual effort, improve service quality,
               and accelerate delivery.
             </p>
           </div>
           <div class="panel">
-            <h3>Data Engineering &amp; Process Optimization</h3>
+            <h3>Data, Analytics &amp; Optimization</h3>
             <p>
-              Create reliable data pipelines, performance metrics, and optimized processes that drive informed
+              Create reliable data pipelines, performance metrics, and optimization programs that drive informed
               decisions and operational efficiency.
             </p>
           </div>
           <div class="panel">
-            <h3>Web &amp; Digital Solutions</h3>
+            <h3>Digital Experience &amp; Platforms</h3>
             <p>
-              Deliver modern web experiences, customer portals, and digital platforms that strengthen engagement and
-              create consistent user journeys.
-            </p>
-          </div>
-          <div class="panel">
-            <h3>Technical Strategy &amp; Systems Integration</h3>
-            <p>
-              Align architecture decisions, integration plans, and delivery governance to ensure scalable systems and
-              transparent execution.
+              Deliver modern web experiences, customer portals, and digital platforms that strengthen engagement,
+              usability, and long-term scalability.
             </p>
           </div>
         </div>
@@ -1365,23 +1436,27 @@
       </section>
 
       <section id="about">
-        <h2>About Us</h2>
-        <p>
-          JV Solutions LLC is a modern, independent technology consulting firm providing advisory, technical, and
-          implementation support for organizations seeking practical, scalable change. We work through a structured,
-          methodical, and solution-oriented approach that reflects integrity, transparency, technical excellence, and
-          a commitment to long-term partnerships.
-        </p>
-        <p>
-          Clients benefit from clear direction, operational efficiency, and solutions designed to be scalable and
-          maintainable as priorities evolve.
-        </p>
-        <div class="section-image">
-          <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80"
-            alt="Leadership team discussing a project plan in a modern workspace"
-            loading="lazy"
-          />
+        <div class="about-grid">
+          <div>
+            <h2>About Us</h2>
+            <p>
+              JV Solutions LLC is a modern, independent technology consulting firm providing advisory, technical, and
+              implementation support for organizations seeking practical, scalable change. We work through a structured,
+              methodical, and solution-oriented approach that reflects integrity, transparency, technical excellence, and
+              a commitment to long-term partnerships.
+            </p>
+            <p>
+              Clients benefit from clear direction, operational efficiency, and solutions designed to be scalable and
+              maintainable as priorities evolve.
+            </p>
+          </div>
+          <div class="section-media">
+            <img
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80"
+              alt="Consulting team collaborating around a laptop in a modern office"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
