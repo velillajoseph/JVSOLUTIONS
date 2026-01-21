@@ -1,30 +1,30 @@
 // public/main.js
 
 // Floating nav (mobile toggle + auto-close)
-const floatingNav = document.querySelector(".floating-nav");
-const floatingToggle = floatingNav?.querySelector(".floating-nav__toggle");
-const floatingLinks = floatingNav?.querySelectorAll(".floating-nav__link, .floating-nav__cta");
+const nav = document.querySelector(".nav");
+const navToggle = nav?.querySelector(".nav-toggle");
+const navLinks = nav?.querySelectorAll(".nav-links a, .nav-cta");
 
-if (floatingNav && floatingToggle) {
+if (nav && navToggle) {
   const closeMenu = () => {
-    floatingNav.classList.remove("floating-nav--open");
-    floatingToggle.setAttribute("aria-expanded", "false");
+    nav.classList.remove("nav--open");
+    navToggle.setAttribute("aria-expanded", "false");
   };
 
-  floatingToggle.addEventListener("click", () => {
-    const isOpen = floatingNav.classList.toggle("floating-nav--open");
-    floatingToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("nav--open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  floatingLinks?.forEach((link) => {
+  navLinks?.forEach((link) => {
     link.addEventListener("click", () => {
-      if (window.matchMedia("(max-width: 720px)").matches) {
+      if (window.matchMedia("(max-width: 900px)").matches) {
         closeMenu();
       }
     });
   });
 
-  const navMediaQuery = window.matchMedia("(max-width: 720px)");
+  const navMediaQuery = window.matchMedia("(max-width: 900px)");
   navMediaQuery.addEventListener("change", (event) => {
     if (!event.matches) {
       closeMenu();

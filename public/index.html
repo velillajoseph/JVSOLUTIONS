@@ -15,24 +15,28 @@
   </head>
   <body id="top">
     <header class="site-header">
-      <nav class="nav">
-        <a class="brand" href="#top" aria-label="JV Solutions home">
-          <img src="./assets/jv-logo.svg" alt="JV Solutions" class="brand-logo" />
-        </a>
+      <nav class="nav" aria-label="Primary">
+        <div class="nav-top">
+          <a class="brand" href="#top" aria-label="JV Solutions home">
+            <img src="./assets/jv-logo.svg" alt="JV Solutions" class="brand-logo" />
+          </a>
 
-        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-
-        <div class="nav-links">
-          <a href="#focus">Consulting Focus</a>
-          <a href="#services">Services</a>
-          <a href="#approach">Advisory Approach</a>
-          <a href="#cases">Case Highlights</a>
-          <a href="#about">About Us</a>
+          <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+            <span></span><span></span><span></span>
+          </button>
         </div>
 
-        <a class="nav-cta" href="#contact">Contact Us</a>
+        <div class="nav-menu" id="nav-menu">
+          <div class="nav-links">
+            <a href="#focus">Consulting Focus</a>
+            <a href="#services">Services</a>
+            <a href="#approach">Advisory Approach</a>
+            <a href="#case-highlights">Case Highlights</a>
+            <a href="#about">About Us</a>
+          </div>
+
+          <a class="nav-cta" href="#contact">Contact Us</a>
+        </div>
       </nav>
     </header>
 
