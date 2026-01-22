@@ -12,7 +12,7 @@
   --surface-alt: #ffffff;
   --text: #0c0c0c;
   --muted: #3f4f6b;
-  --border: rgba(43, 25, 114, 0.18);
+  --border: rgba(43, 25, 114, 0.28);
   --accent: var(--jv-gold);
   --accent-strong: #ffd24a;
   --section-padding: clamp(48px, 8vw, 84px);
@@ -21,8 +21,9 @@
   --space-24: 24px;
   --space-32: 32px;
   --space-48: 48px;
-  --shadow: 0 22px 48px rgba(12, 12, 12, 0.18);
-  --shadow-soft: 0 12px 28px rgba(43, 25, 114, 0.12);
+  --shadow: 0 22px 48px rgba(27, 17, 69, 0.22), 0 12px 28px rgba(0, 162, 233, 0.16);
+  --shadow-soft: 0 12px 28px rgba(43, 25, 114, 0.16), 0 10px 22px rgba(0, 162, 233, 0.12);
+  --section-overlay: rgba(255, 255, 255, 0.7);
 }
 
 /* Header wrapper */
@@ -259,9 +260,10 @@ body {
   font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top, rgba(0, 162, 233, 0.16), transparent 45%),
-    radial-gradient(circle at 18% 12%, rgba(237, 190, 0, 0.12), transparent 48%),
-    linear-gradient(180deg, #f9fbff 0%, #eef4ff 100%);
+    radial-gradient(circle at 12% 8%, rgba(122, 77, 255, 0.2), transparent 48%),
+    radial-gradient(circle at 86% 12%, rgba(0, 162, 233, 0.22), transparent 46%),
+    radial-gradient(circle at 28% 82%, rgba(237, 190, 0, 0.18), transparent 52%),
+    linear-gradient(150deg, #f9f5ff 0%, #edf6ff 45%, #fff6dc 100%);
   line-height: 1.6;
 }
 
@@ -279,12 +281,14 @@ main { padding: 40px 24px 64px; }
 
 section {
   padding: var(--section-padding) 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(43, 25, 114, 0.22);
   scroll-margin-top: 120px;
 }
 
 section:not(#contact):nth-of-type(even) {
-  background: linear-gradient(180deg, rgba(216, 243, 255, 0.5), rgba(230, 225, 246, 0.4));
+  background:
+    linear-gradient(130deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.45)),
+    linear-gradient(160deg, rgba(43, 25, 114, 0.12), rgba(0, 162, 233, 0.1) 48%, rgba(237, 190, 0, 0.08));
 }
 
 h1 {
@@ -825,14 +829,14 @@ p {
   padding: 24px;
   border-radius: var(--card-radius);
   background: var(--surface-alt);
-  box-shadow: 0 12px 30px rgba(43, 25, 114, 0.08);
+  box-shadow: 0 14px 34px rgba(27, 17, 69, 0.16), 0 8px 18px rgba(0, 162, 233, 0.12);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .panel:hover,
 .panel:focus-within {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(43, 25, 114, 0.2);
+  box-shadow: 0 22px 48px rgba(27, 17, 69, 0.24), 0 16px 32px rgba(0, 162, 233, 0.2);
   border-color: rgba(0, 162, 233, 0.4);
 }
 
